@@ -1,0 +1,71 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getUsageNumberPrivate",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getUsageNumberPublic",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"03_Operator_Variables Scope\\03_PrivateContract.sol": "UsagePrivateContractTest"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"03_Operator_Variables Scope\\03_PrivateContract.sol": {
+			"keccak256": "0x28da26d71ae430fd06c249c244bf30a6a4bad2f2c49bb9f42c18ccc5d7462983",
+			"urls": [
+				"bzz-raw://72afd4675c07ff0f955f2e9aa3016b7e7e73ed470dbdcb8b8fcf39ffeaa1f0cf",
+				"dweb:/ipfs/QmPMn1Pci2UvhGENNwJ3cRARaB3rwFBevc4tTp2zA8bSJi"
+			]
+		}
+	},
+	"version": 1
+}

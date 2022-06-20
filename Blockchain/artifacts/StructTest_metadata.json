@@ -1,0 +1,65 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getBookName",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "setBook",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"04_Type_Variables_Other\\04_StructExample.sol": "StructTest"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"04_Type_Variables_Other\\04_StructExample.sol": {
+			"keccak256": "0xd53fa7f3dd2a5d847f3887526eca2ed827d045d30f5c7561538239ffe345f305",
+			"urls": [
+				"bzz-raw://be4da8c218951a34a3c4608aaec386a039f788b2e2acf68c596a8263cb3248d3",
+				"dweb:/ipfs/QmbfFTQC7pZArzh1J7XYwN8Zns3cdTbzudPapaTRd2FHj6"
+			]
+		}
+	},
+	"version": 1
+}

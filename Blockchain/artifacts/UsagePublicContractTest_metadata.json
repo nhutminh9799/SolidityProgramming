@@ -1,0 +1,58 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getUsageNumberPublic",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"03_Operator_Variables Scope\\03_PublicContract.sol": "UsagePublicContractTest"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"03_Operator_Variables Scope\\03_PublicContract.sol": {
+			"keccak256": "0x537d7a0c1f0af360dabcf12960009b759dbb28898960d94e925d5eba9d3846ad",
+			"urls": [
+				"bzz-raw://0e95d6c68fabbb1db9025f9a221136969e359863edac6683ebcf99a2e694b29c",
+				"dweb:/ipfs/QmfJ6iDR4vzcFWKPvwjW4VSX6cDXV71uQ5u8vonfjfBW5w"
+			]
+		}
+	},
+	"version": 1
+}

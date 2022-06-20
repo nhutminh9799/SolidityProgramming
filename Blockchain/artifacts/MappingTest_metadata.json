@@ -1,0 +1,77 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "balances",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBlances",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"04_Type_Variables_Other\\04_MappingExample.sol": "MappingTest"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"04_Type_Variables_Other\\04_MappingExample.sol": {
+			"keccak256": "0x7c981b99c649005d69ca6957eb1dae08858bfccb16030bd243e96d98e2e51293",
+			"urls": [
+				"bzz-raw://4a6b87ee74708beb2b57d5eeebd19c5eb5ae21ae15ac9f12269dc2b58c547673",
+				"dweb:/ipfs/QmTNtUgyKZh3xNoUGZHJUhqJDfZXEcDF4riiQr3QGgGNWQ"
+			]
+		}
+	},
+	"version": 1
+}

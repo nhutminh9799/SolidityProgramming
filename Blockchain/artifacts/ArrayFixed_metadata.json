@@ -1,0 +1,62 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getData",
+				"outputs": [
+					{
+						"internalType": "uint256[3]",
+						"name": "",
+						"type": "uint256[3]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getData()": {
+					"notice": "Function get Array Number"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"04_Type_Variables_Other\\04_ArrayFixed.sol": "ArrayFixed"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"04_Type_Variables_Other\\04_ArrayFixed.sol": {
+			"keccak256": "0x81004685c253a671ef9a3ca3dd4018f8a7af3c21ca32a01fb2d4b52132a1494b",
+			"urls": [
+				"bzz-raw://eeb4f707e4a8ceefd742243e590ad03d571779211e04f9ba12a119d6c8df4288",
+				"dweb:/ipfs/QmafXTJe27GXnqEehHW9rUBRHE1ujCU7W7GqsSUmaTUTuN"
+			]
+		}
+	},
+	"version": 1
+}

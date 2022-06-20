@@ -1,0 +1,135 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "bookID",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "tenSach",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "tacGia",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "giaTien",
+						"type": "uint256"
+					}
+				],
+				"name": "addBook",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "bookID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "getNameBook",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "result",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "tenSach",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "tacGia",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "giaTien",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"addBook(string,string,string,uint256)": {
+					"notice": "Function add Book"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"04_Type_Variables_Other\\04_MappingExample2.sol": "MappingExampleTest"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"04_Type_Variables_Other\\04_MappingExample2.sol": {
+			"keccak256": "0x47e7f4d6261e519877851672a321f73a78065cdef837339df6c303a9281b3d81",
+			"urls": [
+				"bzz-raw://a8c3b5cac7d8f5a6b76f445d6aff521b4e1852a6affe8e45285b4dad3ee9d697",
+				"dweb:/ipfs/QmZ3a6LKNJQb6hse6NCRtYLf5dmcV6LqZd81nw8WomAYcx"
+			]
+		}
+	},
+	"version": 1
+}

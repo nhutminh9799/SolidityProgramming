@@ -1,0 +1,58 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getMessage",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"04_Type_Variables_Other\\04_StringVariables.sol": "StringExample"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"04_Type_Variables_Other\\04_StringVariables.sol": {
+			"keccak256": "0x62886232373eaf9a1401089ccff8495711bcdc0421930153b9aef1424465fbb3",
+			"urls": [
+				"bzz-raw://3b1741e09a22442d5d45a8231793f2d39536fe016cdfef7396aa9a508664a85d",
+				"dweb:/ipfs/QmbngBsLQVUYECBiMLavmYxAKcdJD6F7MfbgxmjuhCr9CT"
+			]
+		}
+	},
+	"version": 1
+}

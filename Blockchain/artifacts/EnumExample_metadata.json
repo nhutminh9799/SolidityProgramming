@@ -1,0 +1,62 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getMonday",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getMonday()": {
+					"notice": "Function Get Monday"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"04_Type_Variables_Other\\04_EnumExample.sol": "EnumExample"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"04_Type_Variables_Other\\04_EnumExample.sol": {
+			"keccak256": "0xdd7a51dd977abd51bbc0fe139b8107722b7f513451d73c72ae4080cbd8ea0c16",
+			"urls": [
+				"bzz-raw://2ad70c925e5dbaae3e68a0e7d7a5136486228d9d96ce68cc986116a425f7bd29",
+				"dweb:/ipfs/QmRifAfWjMhTZoWSwRHwznTHkQo92fFz6u9uJL4bnUikjd"
+			]
+		}
+	},
+	"version": 1
+}
