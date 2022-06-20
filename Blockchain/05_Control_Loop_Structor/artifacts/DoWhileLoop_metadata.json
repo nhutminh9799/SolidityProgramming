@@ -1,0 +1,75 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getCountLoop",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "soDem",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getCountLoop()": {
+					"notice": "Function Get Count Loop"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"05_Control_Loop_Structor/05_DoWhileLoop.sol": "DoWhileLoop"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"05_Control_Loop_Structor/05_DoWhileLoop.sol": {
+			"keccak256": "0xc4433b0891cc240a1b9534f8a71af02b875fa8201db9cbdc0997d7eceb9f781c",
+			"urls": [
+				"bzz-raw://1da7b2ad9fbdf62192746e3393c102f2705b204ac2713cc4f89c399a033b4add",
+				"dweb:/ipfs/QmS6dY1qftoP4VCsr3pJTL6wAvzsCFcpcXsQY26A9nQzir"
+			]
+		}
+	},
+	"version": 1
+}

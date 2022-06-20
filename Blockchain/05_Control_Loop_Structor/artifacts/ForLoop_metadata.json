@@ -1,0 +1,75 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getCountLoop",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "soDem",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getCountLoop()": {
+					"notice": "Function Get Count Loop"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"05_Control_Loop_Structor/05_ForLoop.sol": "ForLoop"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"05_Control_Loop_Structor/05_ForLoop.sol": {
+			"keccak256": "0x35f4443c4ab248617bb260210a41adfef096fabbc2d58ba33d49bb92bc3810f0",
+			"urls": [
+				"bzz-raw://bfa1639149b470e2ddc8909674525752994bb621fb603c902823bd1c5f26a270",
+				"dweb:/ipfs/QmdXEUc1DDLSqu5eYwNj1QCXCwfVhTWsfLjTMfWM4btqrW"
+			]
+		}
+	},
+	"version": 1
+}
