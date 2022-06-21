@@ -1,0 +1,55 @@
+{
+	"compiler": {
+		"version": "0.5.0+commit.1d4f565a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "array_example",
+				"outputs": [
+					{
+						"name": "",
+						"type": "int256[5]"
+					},
+					{
+						"name": "",
+						"type": "uint256[6]"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"05_Control_Loop_Structor\\05_ContinueBreak.sol": "Types"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"05_Control_Loop_Structor\\05_ContinueBreak.sol": {
+			"keccak256": "0x1c91602e4532066a48e30990e2662d66c8c96daa039a4bbc9224b566fe374891",
+			"urls": [
+				"bzzr://ecbc9b70131d3a9a4cfc97ee823acfa4845687aba4437fd37888a75108374581"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,73 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "a",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "b",
+						"type": "uint256"
+					}
+				],
+				"name": "tinhTong",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"tinhTong(uint256,uint256)": {
+					"notice": "Tinh Tong a > b"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"07_Function\\07_RequireTest.sol": "RequireTest"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"07_Function\\07_RequireTest.sol": {
+			"keccak256": "0xf8256d9e59c3746779a070865610fe34a498b46bc54d57d16ae149bb1b1fcd26",
+			"urls": [
+				"bzz-raw://caa661c987083c6b55b564c858b8ce396d99a7da25a36cdaf46fba5ad75a1e05",
+				"dweb:/ipfs/Qme8YZANTU7RETQZKrrcR6gaM9ruTJrpr9wRxh29h9m5UL"
+			]
+		}
+	},
+	"version": 1
+}
