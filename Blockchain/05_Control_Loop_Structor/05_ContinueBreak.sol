@@ -1,25 +1,37 @@
 pragma solidity ^0.8.6;
 
-contract ContinueBreak {
-   uint public soDem = 10;
+contract ContinueContract {
+    uint[]  public data;
 
-    /**
-     * Function Get Count Loop
-     */
-    function getCountLoop() public view returns(uint) {
-       uint countLoop = 0;
-       uint soDemTemp = soDem;
+    uint8 j = 0;
 
-       while(soDemTemp > 5) {
-            countLoop++;
-
-            if(soDemTemp == 7) {
+    function loop() public returns(uint[] memory) {
+        while(j < 5) {
+            j++;
+            if(j == 3) {
                 continue;
             }
-            
-            soDemTemp--;
-       }
-       
-       return countLoop;
-   }
+            data.push(j);
+        }
+
+        return data;
+    }
+}
+
+contract BreakContract {
+    uint[] public data;
+
+    uint8 j = 0;
+
+    function loop() public returns(uint[] memory) {
+        while(j < 5) {
+            j++;
+            if(j == 3) {
+                break;
+            }
+            data.push(j);
+        }
+
+        return data;
+    }
 }
