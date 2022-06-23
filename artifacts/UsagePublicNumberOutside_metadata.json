@@ -1,0 +1,65 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getOutPublicNumber",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blockchain\\03_Operator_Variables Scope\\03_GetPublicContractOut.sol": "UsagePublicNumberOutside"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blockchain/03_Operator_Variables Scope/03_PublicContract.sol": {
+			"keccak256": "0x537d7a0c1f0af360dabcf12960009b759dbb28898960d94e925d5eba9d3846ad",
+			"urls": [
+				"bzz-raw://0e95d6c68fabbb1db9025f9a221136969e359863edac6683ebcf99a2e694b29c",
+				"dweb:/ipfs/QmfJ6iDR4vzcFWKPvwjW4VSX6cDXV71uQ5u8vonfjfBW5w"
+			]
+		},
+		"Blockchain\\03_Operator_Variables Scope\\03_GetPublicContractOut.sol": {
+			"keccak256": "0x5db1b56e648ed30bab8dabb12adde18d9a6c23f5e4cb154f5e66def29e2f74c8",
+			"urls": [
+				"bzz-raw://2c7c864b22f5937b02ae75dd5612112bdad837a966c4e6e4de6edc8ec85cd6c8",
+				"dweb:/ipfs/QmVR6WALS3YUL9UA7L493RiqtybggHeBy6xrBfvoam4Rxh"
+			]
+		}
+	},
+	"version": 1
+}

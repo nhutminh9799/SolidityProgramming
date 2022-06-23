@@ -1,0 +1,191 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_hoTen",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_diaChi",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_soDienThoai",
+						"type": "string"
+					}
+				],
+				"name": "dangKyHocCoBan",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_hoTen",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_diaChi",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_soDienThoai",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_thoiGianHoc",
+						"type": "uint256"
+					}
+				],
+				"name": "dangKyHocVB2",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getInformationCoBan",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getInformationVB2",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "hocVienList",
+				"outputs": [
+					{
+						"internalType": "contract HocVien",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "hocVienVB2List",
+				"outputs": [
+					{
+						"internalType": "contract HocVienVanBang2",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"dangKyHocCoBan(string,string,string)": {
+					"notice": "Function Dang Ky Voi Hoc Sinh Binh Thuong"
+				},
+				"dangKyHocVB2(string,string,string,uint256)": {
+					"notice": "Function Dang Ky Voi Hoc Sinh Van Bang 2"
+				},
+				"getInformationCoBan(uint256)": {
+					"notice": "Get Information Hoc Vien Co Ban"
+				},
+				"getInformationVB2(uint256)": {
+					"notice": "Get Information Hoc Vien Van Bang 2"
+				}
+			},
+			"notice": "Contract Dang Ky HocVien",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blockchain\\08_ContractOOP\\08_InheritanceContract.sol": "DangKyHoc"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blockchain\\08_ContractOOP\\08_InheritanceContract.sol": {
+			"keccak256": "0x1e0e811cab7c02791e4877085c8c9f679ba1355be216e0cae44d0aa8546d957b",
+			"urls": [
+				"bzz-raw://f2b1600403875c9e96a68f9ad23e8f59f4e60a78b64236590d5359409e7d663d",
+				"dweb:/ipfs/QmXSUiPtiFXtMop4EKmSDExmAhucBoNes6UMCfS6QE6ogr"
+			]
+		}
+	},
+	"version": 1
+}

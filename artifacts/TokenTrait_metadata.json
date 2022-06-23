@@ -1,0 +1,44 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blockchain\\09_Advanced_Solidity\\09_ExampleLibrary.sol": "TokenTrait"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blockchain\\09_Advanced_Solidity\\09_ExampleLibrary.sol": {
+			"keccak256": "0x06683651a2f0f98529ca25a92c3b6f524362f9c29a7ef3121cbeb897ba00644b",
+			"urls": [
+				"bzz-raw://3a5a3b844cc7e92a87cb30a4ece3821b83ec785cde93de2b4337dc61290d7182",
+				"dweb:/ipfs/QmRAwjNrUkPZT8HeaL5jrmocVafzzM9WytBpeSd6vCFCyE"
+			]
+		}
+	},
+	"version": 1
+}

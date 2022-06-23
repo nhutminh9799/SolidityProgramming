@@ -1,0 +1,76 @@
+{
+	"compiler": {
+		"version": "0.8.15+commit.e14f2714"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "append",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_old",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_new",
+						"type": "uint256"
+					}
+				],
+				"name": "replace",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blockchain\\09_Advanced_Solidity\\09_LibrarySolidity.sol": "UsingForExample"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blockchain\\09_Advanced_Solidity\\09_LibrarySolidity.sol": {
+			"keccak256": "0xa45e42b1f8cd3008ea8f1c76c470b3200ee6829fb059ca3721ece064d08ec439",
+			"urls": [
+				"bzz-raw://dfddb379294bbfba3a704eb4bd5f88bb702526ef9cc54c2aed5c1ce9279b4eb2",
+				"dweb:/ipfs/QmbcHWUVqXoZoTT42gWyPXmcDpPJexT5ixHUkob1oNdBpD"
+			]
+		}
+	},
+	"version": 1
+}

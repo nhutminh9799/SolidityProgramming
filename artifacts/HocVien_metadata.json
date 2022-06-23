@@ -1,0 +1,133 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "diaChi",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getInformation",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "hoTen",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_hoTen",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_diaChi",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_soDienThoai",
+						"type": "string"
+					}
+				],
+				"name": "inputInfomation",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "soDienThoai",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getInformation()": {
+					"notice": "Function Get Information"
+				},
+				"inputInfomation(string,string,string)": {
+					"notice": "Function Input Information"
+				}
+			},
+			"notice": "Contract Hoc Vien",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blockchain\\08_ContractOOP\\08_InheritanceContract.sol": "HocVien"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blockchain\\08_ContractOOP\\08_InheritanceContract.sol": {
+			"keccak256": "0x1e0e811cab7c02791e4877085c8c9f679ba1355be216e0cae44d0aa8546d957b",
+			"urls": [
+				"bzz-raw://f2b1600403875c9e96a68f9ad23e8f59f4e60a78b64236590d5359409e7d663d",
+				"dweb:/ipfs/QmXSUiPtiFXtMop4EKmSDExmAhucBoNes6UMCfS6QE6ogr"
+			]
+		}
+	},
+	"version": 1
+}
