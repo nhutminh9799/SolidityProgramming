@@ -1,0 +1,65 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "y",
+						"type": "uint256"
+					}
+				],
+				"name": "sc",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "x",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Research\\Issue\\5_SwitchCase.sol": "SwitchCase"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Research\\Issue\\5_SwitchCase.sol": {
+			"keccak256": "0x0348e64517107b937c54a69da1d0de1f9bb51aa4d66bc7509fda8a765bc825f8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3338d8e46a1852eabf862ea134ec9f1b0b3047cdb5fe6622bad51c0da261ea32",
+				"dweb:/ipfs/QmZYZf5HVYXhFYn5JMvYdKEpQ8FuWCkSbfxW1h5uddi1KJ"
+			]
+		}
+	},
+	"version": 1
+}
