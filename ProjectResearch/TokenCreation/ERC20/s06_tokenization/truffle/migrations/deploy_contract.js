@@ -1,5 +1,5 @@
-const SimpleStorage = artifacts.require("SimpleStorage");
+const SimpleStorage = artifacts.require("./MyToken.sol");
 
 module.exports = function (deployer) {
-  deployer.deploy(SimpleStorage);
+    await deployer.deploy(MyToken, 1000000000);
 };
