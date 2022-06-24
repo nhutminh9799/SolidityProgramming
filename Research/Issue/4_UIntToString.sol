@@ -7,7 +7,7 @@ library UIntToString {
      * @dev Converts a `uint256` to its ASCII `string` decimal representation.
      */
 
-    function toString(uint256 value) pure public returns (string memory) {
+    function toString(uint256 value) pure internal returns (string memory) {
         if (value == 0) {
             return "0";
         }
