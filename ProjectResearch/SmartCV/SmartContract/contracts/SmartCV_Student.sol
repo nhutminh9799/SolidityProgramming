@@ -18,7 +18,6 @@ contract Student {
     ListStudent listStudent = new ListStudent();
     ListBusiness listBusiness = new ListBusiness();
     ApplyCV applyCV = new ApplyCV();
-    // Business business = new Business();
 
     // Gán địa chỉ cho người dùng
     constructor () {
@@ -47,27 +46,33 @@ contract Student {
             listStudent.addSV(_studentOwner, _name, _birthDay, _professionalTitle, _email, _github, _linked, _password);
     }
 
-    function getListStudent(address _studentOwner) public view returns(string memory, string memory, string memory, string memory, string memory, string memory)  {
-        return listStudent.getListSV(_studentOwner);
+    function getStudentProfile(address _studentOwner) public view returns(
+        address studentOwner, 
+        string memory name, 
+        string memory birthDay, 
+        string memory professionalTitle, 
+        string memory email, 
+        string memory github, 
+        string memory linkedin,
+        string memory password){
+            return listStudent.getProfile(_studentOwner);
     }
-
     // Kiểm tra tài khoản người dùng có tồn tại hay không? (Đăng nhập)
-    function checkProfile(address _studentOwner, string memory _password) public view returns(uint)  {
-        return listStudent.checkStudent(_studentOwner, _password);
+    function checkStudentProfile(address _studentOwner, string memory _password) public view returns(uint)  {
+        return listStudent.checkSV(_studentOwner, _password);
     }
 
-    function addSkill (
+    function addStudentSkill (
         address _studentOwner,
         string memory _title, 
         uint _level) public {
             listStudent.addSkill(_studentOwner, _title, _level);
     }
 
-    function getSkill(address _studentOwner) public view returns(string[] memory,uint[] memory)  {
+    function getStudentSkill(address _studentOwner) public view returns(string[] memory,uint[] memory)  {
         return listStudent.getSkill(_studentOwner);
     }
-
-    // Gửi CV
+    // //Gửi CV
     function sendCV(address _studentOwner, address _businessOwner) public {
         applyCV.addCV(_studentOwner, _businessOwner);
     }
@@ -88,8 +93,15 @@ contract Student {
             listBusiness.addDN(_businessOwner, _name, _country, _facebook, _website, _linkedin, _focusArea);
     }
 
-    function getListBusiness(address _businessOwner) public view returns(string memory, string memory, string memory, string memory, string memory, string memory)  {
-        return listBusiness.getListDN(_businessOwner);
+    function getBusinessProfile(address _businessOwner) public view returns(
+        address businessOwner, 
+        string memory name, 
+        string memory country, 
+        string memory facebook, 
+        string memory website, 
+        string memory linkedin, 
+        string memory focusArea) {
+            return listBusiness.getProfile(_businessOwner);
     }
 
     // // Lấy danh sách CV nộp vào công ty
@@ -97,5 +109,4 @@ contract Student {
         return applyCV.getCV(_businessOwner);
     }
     
-
 }

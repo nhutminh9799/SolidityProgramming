@@ -19,7 +19,6 @@ contract ListStudent {
         string title; 
         uint level;
     }
-    
     ListSV[] public listSVs;
     ListSkill[] public listSkills;
 
@@ -35,27 +34,58 @@ contract ListStudent {
             listSVs.push(ListSV(_studentOwner, _name, _birthDay, _professionalTitle, _email, _github, _linked, _password));
     }
 
-    function getListSV(address _studentOwner) public view returns(string memory name,string memory birthDay,string memory professionalTitle,string memory email,string memory github,string memory linkedin) {
+    function getListSV() public view returns(address[] memory, string[] memory, string[] memory, string[] memory, string[] memory, string[] memory, string[] memory, string[] memory) {
+        address[] memory studentOwners = new address[](listSVs.length);
+        string[] memory names = new string[](listSVs.length);
+        string[] memory birthDays = new string[](listSVs.length);
+        string[] memory professionalTitles = new string[](listSVs.length);
+        string[] memory emails = new string[](listSVs.length);
+        string[] memory githubs = new string[](listSVs.length);
+        string[] memory linkedins = new string[](listSVs.length);
+        string[] memory passwords = new string[](listSVs.length);
         for(uint i=0; i<listSVs.length;i++){
-            if(listSVs[i].studentOwner == _studentOwner){
-                return (listSVs[i].name, 
-                listSVs[i].birthDay, 
-                listSVs[i].professionalTitle, 
-                listSVs[i].email, 
-                listSVs[i].github, 
-                listSVs[i].linkedin);
-            } 
-        }  
+            studentOwners[i] = listSVs[i].studentOwner;
+            names[i] = listSVs[i].name;
+            birthDays[i] = listSVs[i].birthDay;
+            professionalTitles[i] = listSVs[i].professionalTitle;
+            emails[i] = listSVs[i].email;
+            githubs[i] = listSVs[i].github;
+            linkedins[i] = listSVs[i].linkedin;
+            passwords[i] = listSVs[i].password;
+        }
+        return (studentOwners, names, birthDays, professionalTitles, emails, githubs, linkedins, passwords);
     }
 
-    function checkStudent(address _studentOwner, string memory _password) public view returns(uint x) {
+    function getProfile(address _studentOwner) public view returns(
+        address studentOwner, 
+        string memory name, 
+        string memory birthDay, 
+        string memory professionalTitle, 
+        string memory email, 
+        string memory github, 
+        string memory linkedin,
+        string memory password) {
+            for(uint i=0; i<listSVs.length;i++){
+                if(listSVs[i].studentOwner == _studentOwner){
+                    return (listSVs[i].studentOwner,
+                            listSVs[i].name, 
+                            listSVs[i].birthDay, 
+                            listSVs[i].professionalTitle, 
+                            listSVs[i].email, 
+                            listSVs[i].github, 
+                            listSVs[i].linkedin,
+                            listSVs[i].password);
+                }
+            }
+    }
+
+    function checkSV(address _studentOwner, string memory _password) public view returns(uint x) {
         for(uint i=0; i<listSVs.length;i++){
             if((listSVs[i].studentOwner == _studentOwner) && (keccak256(bytes(listSVs[i].password)) == keccak256(bytes(_password)))){
                 return 1;
             }
         }
     }
-
     function addSkill(
         address _studentOwner,
         string memory _title, 
