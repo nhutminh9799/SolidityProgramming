@@ -77,6 +77,11 @@ contract Student {
         applyCV.addCV(_studentOwner, _businessOwner);
     }
 
+    // Xem đánh giá tực tập
+    function getReview(address _studentOwner, address _businessOwner) public view returns(address studentOwner, address businessOwner, string memory content)  {
+        return applyCV.getReview(_studentOwner, _businessOwner);
+    }
+
     // ======================================
     // ======= Business Functions ===========
     // ======================================
@@ -104,9 +109,14 @@ contract Student {
             return listBusiness.getProfile(_businessOwner);
     }
 
-    // // Lấy danh sách CV nộp vào công ty
+    // Lấy danh sách CV nộp vào công ty
     function getListCV(address _businessOwner) public view returns(address[] memory, address[] memory)  {
         return applyCV.getCV(_businessOwner);
+    }
+
+    // Đánh giá thực tập cho sinh viên
+    function sendReview(address _studentOwner, address _businessOwner, string memory _content) public {
+        applyCV.addReview(_studentOwner, _businessOwner, _content);
     }
     
 }

@@ -8,14 +8,14 @@ contract ApplyCV {
         address businessOwner;
     }
 
-    // struct Review {
-    //     address _owner;
-    //     address _b_owner;
-    //     string _content;
-    // }
+    struct Review {
+        address studentOwner;
+        address businessOwner;
+        string content;
+    }
 
     CV[] public cvs;
-    // Review[] public reviews;
+    Review[] public reviews;
 
     //Nhận CV
     function addCV (address _studentOwner, address _businessOwner) public {
@@ -33,5 +33,21 @@ contract ApplyCV {
             }
         }
         return (studentOwners, businessOwners);
+    }
+
+    //Lưu trữ đánh giá thực tập của từng sinh viên
+    function addReview (address _studentOwner, address _businessOwner, string memory _content) public {
+            reviews.push(Review(_studentOwner, _businessOwner, _content));
+    }
+
+    //Lấy thông tin đánh giá thực tập
+    function getReview(address _studentOwner, address _businessOwner) public view returns(address studentOwner, address businessOwner, string memory content)  {
+        for(uint i=0; i<reviews.length;i++){
+            if(reviews[i].businessOwner == _businessOwner && reviews[i].studentOwner == _studentOwner) {
+                return(reviews[i].studentOwner,
+                        reviews[i].businessOwner,
+                        reviews[i].content);
+            }
+        }
     }
 }

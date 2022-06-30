@@ -17,8 +17,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -120,8 +119,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -145,8 +143,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -193,8 +190,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -304,8 +300,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -329,8 +324,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_businessOwner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_country\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_facebook\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_website\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_linkedin\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_focusArea\",\"type\":\"string\"}],\"name\":\"addBusinessProfile\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_studentOwner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_birthDay\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_professionalTitle\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_email\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_github\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_linked\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_password\",\"type\":\"string\"}],\"name\":\"addStudentProfile\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_studentOwner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_title\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_level\",\"type\":\"uint256\"}],\"name\":\"addStudentSkill\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_studentOwner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_password\",\"type\":\"string\"}],\"name\":\"checkStudentProfile\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_businessOwner\",\"type\":\"address\"}],\"name\":\"getBusinessProfile\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"businessOwner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"country\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"facebook\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"website\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"linkedin\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"focusArea\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_businessOwner\",\"type\":\"address\"}],\"name\":\"getListCV\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"},{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSender\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_studentOwner\",\"type\":\"address\"}],\"name\":\"getStudentProfile\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"studentOwner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"birthDay\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"professionalTitle\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"github\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"linkedin\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"password\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_studentOwner\",\"type\":\"address\"}],\"name\":\"getStudentSkill\",\"outputs\":[{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_studentOwner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_businessOwner\",\"type\":\"address\"}],\"name\":\"sendCV\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/SmartCV_Student.sol\":\"Student\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/SmartCV_Apply.sol\":{\"keccak256\":\"0xa0bcf4418d551730837793ece0a2608fcdb5a82033129d478fabd395d58b391f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5012219980cdc2ec4e9cd36e8dee89e7e86c5142b981ec7788a6e2d4e654688e\",\"dweb:/ipfs/QmVbA3uoBkjLbYZpozfRBEwQ7oMxDGq6qVDzFQDDeLw6Rc\"]},\"project:/contracts/SmartCV_ListBusiness.sol\":{\"keccak256\":\"0xd908058724b52222c126cc98f790f52a6d7728de9b91e594e6fe27bbf4ab7146\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://798dfe9d635b85c850df2d2a23c4649bf93c628a90e3a01913d04e3526e823f5\",\"dweb:/ipfs/Qmeknz1QviXiEni6fCaT4L3Yt3NhgQy6fMSFDvLqVSVtKx\"]},\"project:/contracts/SmartCV_ListStudent.sol\":{\"keccak256\":\"0x5f667b0f4bab797396b6d65e9260300a80f90b0d22c81069854bdbc9f5471264\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://34c65e2257209df4dff26e0aa77ba245ce13eb9102c2e715b8cb694d023198c6\",\"dweb:/ipfs/QmPeSDVncBGXQd5a8VfP5R8WEv92GExJDbH8YePtV7Fxk4\"]},\"project:/contracts/SmartCV_Student.sol\":{\"keccak256\":\"0x4e115f283c0932930f7c319c07f08254f200ce1a6e244c7c4ea06b0fba7604d9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a305bb4776c5fdc069583f16762e068c653c96737e0adec4ff04238aeaf9b03c\",\"dweb:/ipfs/QmS2C6XFPMBxVcfPbYwzFqRnUu2w651MA3WpH6uJjHbuZj\"]}},\"version\":1}",
@@ -24355,8 +24349,7 @@
     }
   },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-06-27T02:10:40.846Z",
-  "networkType": "ethereum",
+  "updatedAt": "2022-06-27T03:13:12.177Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
