@@ -41,13 +41,17 @@ contract ApplyCV {
     }
 
     //Lấy thông tin đánh giá thực tập
-    function getReview(address _studentOwner, address _businessOwner) public view returns(address studentOwner, address businessOwner, string memory content)  {
+    function getReview(address _studentOwner, address _businessOwner) public view returns(address[] memory, address[] memory, string[] memory)  {
+        address[] memory studentOwners = new address[](reviews.length);
+        address[] memory businessOwners = new address[](reviews.length);
+        string[] memory contents = new string[](reviews.length);
         for(uint i=0; i<reviews.length;i++){
             if(reviews[i].businessOwner == _businessOwner && reviews[i].studentOwner == _studentOwner) {
-                return(reviews[i].studentOwner,
-                        reviews[i].businessOwner,
-                        reviews[i].content);
+                studentOwners[i] = reviews[i].studentOwner;
+                businessOwners[i] = reviews[i].businessOwner;
+                contents[i] = reviews[i].content;
             }
         }
+        return (studentOwners, businessOwners, contents);
     }
 }

@@ -78,7 +78,7 @@ contract Student {
     }
 
     // Xem đánh giá tực tập
-    function getReview(address _studentOwner, address _businessOwner) public view returns(address studentOwner, address businessOwner, string memory content)  {
+    function getReview(address _studentOwner, address _businessOwner) public view returns(address[] memory , address[] memory , string[] memory)  {
         return applyCV.getReview(_studentOwner, _businessOwner);
     }
 
