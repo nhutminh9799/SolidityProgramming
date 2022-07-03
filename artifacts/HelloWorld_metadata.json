@@ -1,0 +1,58 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getMessage",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blockchain\\00_Setup_Enviroment\\00_HelloWorld.sol": "HelloWorld"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blockchain\\00_Setup_Enviroment\\00_HelloWorld.sol": {
+			"keccak256": "0x5bf31a72281a42115e57e770f53c9ba9d959cc69ce82a7d5e6487072d65de79d",
+			"urls": [
+				"bzz-raw://899f78ae6bf033d97c5b208fd46fd847feb6244fc827465723422ae7838f4ad4",
+				"dweb:/ipfs/QmWHcTJKtkyZBvqQtPjhDfRFYtDjsvuMjwTYs2bGaRiaqA"
+			]
+		}
+	},
+	"version": 1
+}
