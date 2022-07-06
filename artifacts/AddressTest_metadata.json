@@ -1,0 +1,64 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "myAddress",
+						"type": "address"
+					}
+				],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blockchain\\02_Type_Variables_Number\\02_AddressType.sol": "AddressTest"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blockchain\\02_Type_Variables_Number\\02_AddressType.sol": {
+			"keccak256": "0x9278955aae079f364e2d151e9585084c7f0cc1e64d8d77adab591ef46206c0a2",
+			"urls": [
+				"bzz-raw://1a68cac155f167cc65d78b03ac69995c4a817462559b6428b0bd71e98699c1c5",
+				"dweb:/ipfs/QmQoetr4Eem2jjPPhJGJVzaE6CLbqnnuRbqzUBx31r3fyc"
+			]
+		}
+	},
+	"version": 1
+}

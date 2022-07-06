@@ -1,4 +1,4 @@
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.6;
 
 import "ProjectResearch/SupplyChain/Item.sol";
 import "ProjectResearch/SupplyChain/Ownable.sol";
