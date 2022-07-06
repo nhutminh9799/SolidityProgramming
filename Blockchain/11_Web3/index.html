@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>My Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="node_modules/web3.js-browser/build/web3.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="deposit_money">
+            <h1>Deposit Function</h1>
+            <input type="text" id="_yourAddrDeposit" placeholder="Fill your address">
+            <br><br>
+            <input type="text" id="_amountDeposit" placeholder="Fill money deposit" />
+            <button id="deposit">Deposit</button>
+        </div>
+        <hr>
+        <div class="get_balance">
+            <h1>Get Balance Function</h1>
+            <input type="text" id="_yourAddrBal" placeholder="Fill your address">
+            <button id="gbalance">Get Balance</button>
+            <p id="balance"></p>
+        </div>
+        <hr>
+        <div class="deposit_money">
+            <h1>Send Function</h1>
+            <input type="text" id="_senderAddr" placeholder="Fill the sender's address">
+            <br><br>
+            <input type="text" id="_receiverAddr" placeholder="Fill the receiver's address">
+            <br><br>
+            <input type="text" id="_amountSend" placeholder="Fill money send" />
+            <button id="send">Send</button>
+        </div>
+    </div>
+    <script>
+        //Kết nối Web đến Ganache
+        var web3 = new Web3(Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+
+        //In ra các account của Ganache
+        web3.eth.getAccounts().then(console.log);
+
+        //Khai báo 1 biến đại diện cho contract
+        var myContract = new web3.eth.Contract(
+            [{
+                "anonymous": false,
+                "inputs": [{
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                }, {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                }, {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }],
+                "name": "sent",
+                "type": "event"
+            }, {
+                "inputs": [{
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }],
+                "name": "balances",
+                "outputs": [{
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }],
+                "stateMutability": "view",
+                "type": "function"
+            }, {
+                "inputs": [{
+                    "internalType": "address",
+                    "name": "myAddress",
+                    "type": "address"
+                }, {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }],
+                "name": "deposit",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            }, {
+                "inputs": [{
+                    "internalType": "address",
+                    "name": "myAddress",
+                    "type": "address"
+                }],
+                "name": "getBalance",
+                "outputs": [{
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }],
+                "stateMutability": "view",
+                "type": "function"
+            }, {
+                "inputs": [{
+                    "internalType": "address",
+                    "name": "sender",
+                    "type": "address"
+                }, {
+                    "internalType": "address",
+                    "name": "receiver",
+                    "type": "address"
+                }, {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }],
+                "name": "send",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            }],
+            "0xbDFB32dBFC7b37dE69487b887D425bfAd6811e84"
+        );
+
+        //Xử lý gọi chức năng deposit
+        $("#deposit").click(function() {
+            myContract.methods
+                .deposit($("#_yourAddrDeposit").val(), $("#_amountDeposit").val())
+                .send({
+                    from: $("#_yourAddrDeposit").val(),
+                    gas: 3000000
+                });
+        });
+
+        //Xử lý gọi chức năng getBalance
+        $("#gbalance").click(function() {
+            myContract.methods
+                .getBalance($("#_yourAddrBal").val())
+                .call()
+                .then(function(bal) {
+                    $("#balance").html("Balance: " + bal.toString());
+                });
+        });
+
+        //Xử lý gọi chức năng send
+        $("#send").click(function() {
+            myContract.methods
+                .send($("#_senderAddr").val(), $("#_receiverAddr").val(), $("#_amountSend").val())
+                .send({
+                    from: $("#_senderAddr").val(),
+                    gas: 3000000
+                });
+        });
+    </script>
+</body>
+
+</html>
