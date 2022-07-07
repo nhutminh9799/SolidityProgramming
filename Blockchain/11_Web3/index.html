@@ -36,13 +36,28 @@
             <input type="text" id="_amountSend" placeholder="Fill money send" />
             <button id="send">Send</button>
         </div>
+        <hr>
+        <div class="web3_api">
+            <h1>Web3 API</h1>
+            <button id="gAccounts">Get Accounts</button>
+            <button id="gGasPrice">Get Gas Price</button>
+            <button id="gChainID">Get Chain ID</button>
+            <button id="hashFunc">Hash Function</button>
+            <br><br>
+            <input type="text" id="addr" placeholder="Fill address" />
+            <button id="checkAddr">Check Address</button>
+            <button id="getBal">Get Balance</button>
+            <br><br>
+            <input type="text" id="sendAddr" placeholder="Fill the sender's address" />
+            <input type="text" id="recAddr" placeholder="Fill the receiver's address" />
+            <input type="text" id="moneySend" placeholder="Fill money send" />
+            <button id="sendTrans">Send Transaction</button>
+        </div>
+        <hr>
     </div>
     <script>
         //Kết nối Web đến Ganache
         var web3 = new Web3(Web3.providers.HttpProvider("http://127.0.0.1:7545"));
-
-        //In ra các account của Ganache
-        web3.eth.getAccounts().then(console.log);
 
         //Khai báo 1 biến đại diện cho contract
         var myContract = new web3.eth.Contract(
@@ -127,7 +142,7 @@
                 "stateMutability": "nonpayable",
                 "type": "function"
             }],
-            "0xbDFB32dBFC7b37dE69487b887D425bfAd6811e84"
+            "0x6426fC3f6b30ea92929d0f474A4826281ddC2772"
         );
 
         //Xử lý gọi chức năng deposit
@@ -158,6 +173,50 @@
                     from: $("#_senderAddr").val(),
                     gas: 3000000
                 });
+        });
+
+        //Web3 API
+        //In ra các account của provider đã kết nối ở trên
+        $("#gAccounts").click(function() {
+            web3.eth.getAccounts().then(console.log);
+        });
+
+        //In ra gas price của provider đã kết nối ở trên
+        $("#gGasPrice").click(function() {
+            web3.eth.getGasPrice().then(console.log);
+        });
+
+        //In ra chain id của provider đã kết nối ở trên
+        $("#gChainID").click(function() {
+            web3.eth.getChainId().then(console.log);
+        });
+
+        //In ra giá trị sau khi đã sử dụng hàm băm (dùng để so sánh chuỗi)
+        $("#hashFunc").click(function() {
+            //Sử dụng hàm băm SHA3
+            console.log(web3.utils.sha3('UIT'));
+
+            //Sử dụng hàm băm SHA256
+            console.log(web3.utils.keccak256('UIT'));
+        });
+
+        //In ra giá trị luận lý sau khi kiểm tra giá trị nhập vào có kiểu dữ liệu address hay không?
+        $("#checkAddr").click(function() {
+            console.log(web3.utils.isAddress($("#addr").val()));
+        });
+
+        //In ra số dư của tài khoản
+        $("#getBal").click(function() {
+            web3.eth.getBalance($("#addr").val()).then(console.log);
+        });
+
+
+        $("#sendTrans").click(function() {
+            web3.eth.sendTransaction({
+                from: $("#sendAddr").val(),
+                to: $("#recAddr").val(),
+                value: web3.utils.toWei($("#moneySend").val(), "ether")
+            });
         });
     </script>
 </body>
