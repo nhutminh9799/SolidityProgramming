@@ -1,0 +1,58 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getResult",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Blockchain\\01_Syntax_Basic\\01_SolidityTest.sol": "SolidityTest"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Blockchain\\01_Syntax_Basic\\01_SolidityTest.sol": {
+			"keccak256": "0x7e3f7f63f87de7a034050351a9231117037ddd9c7a47cea7a5cb519be57ae2f6",
+			"urls": [
+				"bzz-raw://4dcf83de87d5142c16d91b3e7eeca4634f40f93a7f61601bf2e401d6738b3167",
+				"dweb:/ipfs/QmRyPhjyUVrVzuxN3aECrj5A3ef4pH1TzAMDwS5s57hVt4"
+			]
+		}
+	},
+	"version": 1
+}
