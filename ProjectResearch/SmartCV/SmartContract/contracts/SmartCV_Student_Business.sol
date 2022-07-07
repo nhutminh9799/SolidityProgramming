@@ -60,6 +60,19 @@ contract Student {
     }
 
     //Chức năng lấy thông tin kĩ năng của sinh viên
+    function getListBusiness() public view returns(
+        address[] memory, 
+        string[] memory, 
+        string[] memory, 
+        string[] memory,
+        string[] memory, 
+        string[] memory, 
+        string[] memory,
+        string[] memory)  {
+            return listBusiness.getListDN();
+    }
+
+    //Chức năng lấy danh sách doanh nghiệp
     function getStudentSkill(address _studentOwner) public view returns(
         string[] memory,
         uint[] memory)  {
