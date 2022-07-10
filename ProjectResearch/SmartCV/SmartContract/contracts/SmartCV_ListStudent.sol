@@ -124,6 +124,29 @@ contract ListStudent {
             listSkills.push(ListSkill(_studentOwner, _title, _level));
     }
 
+    //Chức năng kiểm tra sinh viên đã thêm kĩ năng đó hay chưa?
+    function checkSkill(
+        address _studentOwner, 
+        string memory _title) public view returns(uint x) {
+            for(uint i=0; i<listSkills.length; i++){
+                if((listSkills[i].studentOwner == _studentOwner) && (keccak256(bytes(listSkills[i].title)) == keccak256(bytes(_title)))){
+                    return 1;
+                }
+            }
+    }
+
+    //Chức năng đếm số lượng kĩ năng của sinh viên
+    function checkNumSkill(
+        address _studentOwner) public view returns(uint x) {
+            uint _count = 0;
+            for(uint i=0; i<listSkills.length; i++){
+                if(listSkills[i].studentOwner == _studentOwner){
+                    _count += 1;
+                }
+            }
+            return _count;
+    }
+
     //Chức năng lấy thông tin kĩ năng của sinh viên
     function getSkill(address _studentOwner) public view returns(
         string[] memory,

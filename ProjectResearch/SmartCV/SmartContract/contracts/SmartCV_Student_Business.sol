@@ -40,14 +40,14 @@ contract Student {
         string memory email, 
         string memory github, 
         string memory linkedin,
-        string memory password){
+        string memory password) {
             return listStudent.getProfile(_studentOwner);
     }
 
     // Chức năng kiểm tra tài khoản sinh viên có tồn tại hay không? (Đăng nhập)
     function checkStudentProfile(
         address _studentOwner, 
-        string memory _password) public view returns(uint)  {
+        string memory _password) public view returns(uint x) {
             return listStudent.checkSV(_studentOwner, _password);
     }
 
@@ -59,30 +59,46 @@ contract Student {
             listStudent.addSkill(_studentOwner, _title, _level);
     }
 
+    // Chức năng kiểm tra kĩ năng của sinh viên có tồn tại hay không?
+    function checkStudentSkilll(
+        address _studentOwner, 
+        string memory _title) public view returns(uint x) {
+            return listStudent.checkSkill(_studentOwner, _title);
+    }
+
+    // Chức năng kiểm tra số lượng kĩ năng của sinh viên
+    function checkNumStudentSkilll(
+        address _studentOwner) public view returns(uint x) {
+            uint _count = listStudent.checkNumSkill(_studentOwner);
+            if(_count > 10){
+                return 1;
+            }
+    }
+
     //Chức năng lấy thông tin kĩ năng của sinh viên
+    function getStudentSkill(address _studentOwner) public view returns(
+        string[] memory titles,
+        uint[] memory levels) {
+        return listStudent.getSkill(_studentOwner);
+    }
+
+    //Chức năng lấy danh sách doanh nghiệp
     function getListBusiness() public view returns(
         address[] memory, 
         string[] memory, 
         string[] memory, 
-        string[] memory,
         string[] memory, 
         string[] memory, 
+        string[] memory, 
         string[] memory,
-        string[] memory)  {
-            return listBusiness.getListDN();
-    }
-
-    //Chức năng lấy danh sách doanh nghiệp
-    function getStudentSkill(address _studentOwner) public view returns(
-        string[] memory,
-        uint[] memory)  {
-        return listStudent.getSkill(_studentOwner);
+        string[] memory) {
+        return listBusiness.getListDN();
     }
 
     //Chức năng lấy thông tin tuyển dụng của doanh nghiệp
     function getRecruit(address _businessOwner) public view returns(
         string[] memory, 
-        string[] memory)  {
+        string[] memory) {
         return applyCV.getRecruit(_businessOwner);
     }
 
@@ -101,7 +117,7 @@ contract Student {
         address _businessOwner) public view returns(
             address studentOwner, 
             address businessOwner, 
-            string memory content)  {
+            string memory content) {
                 return applyCV.getReview(_studentOwner, _businessOwner);
     }
 
@@ -137,7 +153,7 @@ contract Student {
     // Chức năng kiểm tra tài khoản doanh nghiệp có tồn tại hay không? (Đăng nhập)
     function checkBusinessProfile(
         address _businessOwner, 
-        string memory _password) public view returns(uint)  {
+        string memory _password) public view returns(uint) {
             return listBusiness.checkDN(_businessOwner, _password);
     }
 
