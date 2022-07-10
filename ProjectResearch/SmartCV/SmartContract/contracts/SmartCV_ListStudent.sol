@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-//Lưu trữ danh sách sinh viên
+// Lưu trữ danh sách sinh viên
 contract ListStudent {
 
-    //Khai báo cấu trúc lưu trữ thông tin sinh viên
+    // Khai báo cấu trúc lưu trữ thông tin sinh viên
     struct ListSV {
         address studentOwner;
         string name; 
@@ -16,18 +16,18 @@ contract ListStudent {
         string password;
     }
 
-    //Khai báo cấu trúc lưu trữ thông tin kĩ năng của sinh viên
+    // Khai báo cấu trúc lưu trữ thông tin kĩ năng của sinh viên
     struct ListSkill {
         address studentOwner;
         string title; 
         uint level;
     }
 
-    //Khai báo các mảng để lưu trữ thông tin
+    // Khai báo các mảng để lưu trữ thông tin
     ListSV[] public listSVs;
     ListSkill[] public listSkills;
 
-    //Chức năng thêm thông tin sinh viên
+    // Chức năng thêm thông tin sinh viên
     function addSV (
         address _studentOwner,
         string memory _name,
@@ -49,7 +49,7 @@ contract ListStudent {
                 );
     }
 
-    //Chức năng lấy danh sách sinh viên đã thêm
+    // Chức năng lấy danh sách sinh viên đã thêm
     function getListSV() public view returns(
         address[] memory, 
         string[] memory, 
@@ -80,7 +80,7 @@ contract ListStudent {
             return (studentOwners, names, birthDays, professionalTitles, emails, githubs, linkedins, passwords);
     }
 
-    //Chức năng lấy thông tin của sinh viên
+    // Chức năng lấy thông tin của sinh viên
     function getProfile(address _studentOwner) public view returns(
         address studentOwner, 
         string memory name, 
@@ -104,7 +104,7 @@ contract ListStudent {
             }
     }
 
-    //Chức năng kiểm tra sinh viên đã đăng ký hay chưa?
+    // Chức năng kiểm tra sinh viên đã đăng ký hay chưa?
     function checkSV(
         address _studentOwner, 
         string memory _password) public view returns(uint x) {
@@ -115,7 +115,7 @@ contract ListStudent {
             }
     }
 
-    //Chức năng thêm thông tin kĩ năng của sinh viên
+    // Chức năng thêm thông tin kĩ năng của sinh viên
     function addSkill(
         address _studentOwner,
         string memory _title, 
@@ -124,7 +124,7 @@ contract ListStudent {
             listSkills.push(ListSkill(_studentOwner, _title, _level));
     }
 
-    //Chức năng kiểm tra sinh viên đã thêm kĩ năng đó hay chưa?
+    // Chức năng kiểm tra sinh viên đã thêm kĩ năng đó hay chưa?
     function checkSkill(
         address _studentOwner, 
         string memory _title) public view returns(uint x) {
@@ -135,7 +135,7 @@ contract ListStudent {
             }
     }
 
-    //Chức năng đếm số lượng kĩ năng của sinh viên
+    // Chức năng đếm số lượng kĩ năng của sinh viên
     function checkNumSkill(
         address _studentOwner) public view returns(uint x) {
             uint _count = 0;
@@ -147,7 +147,7 @@ contract ListStudent {
             return _count;
     }
 
-    //Chức năng lấy thông tin kĩ năng của sinh viên
+    // Chức năng lấy thông tin kĩ năng của sinh viên
     function getSkill(address _studentOwner) public view returns(
         string[] memory,
         uint[] memory) {

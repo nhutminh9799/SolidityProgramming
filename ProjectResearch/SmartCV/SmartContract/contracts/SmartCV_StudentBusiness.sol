@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-//Import các contract cần thiết để sử dụng
+// Import các contract cần thiết để sử dụng
 import "./SmartCV_ListStudent.sol";
 import "./SmartCV_ListBusiness.sol";
 import "./SmartCV_Apply.sol";
 
-//CV dành cho sinh viên
-contract Student {
+// CV dành cho sinh viên
+contract StudentBusiness {
 
-    //Khai contract đã import để sử dụng các function ở contract đó
+    // Khai contract đã import để sử dụng các function ở contract đó
     ListStudent listStudent = new ListStudent();
     ListBusiness listBusiness = new ListBusiness();
     ApplyCV applyCV = new ApplyCV();
@@ -31,7 +31,7 @@ contract Student {
             listStudent.addSV(_studentOwner, _name, _birthDay, _professionalTitle, _email, _github, _linkedin, _password);
     }
 
-    //Chức năng lấy thông tin của sinh viên
+    // Chức năng lấy thông tin của sinh viên
     function getStudentProfile(address _studentOwner) public view returns(
         address studentOwner, 
         string memory name, 
@@ -51,7 +51,7 @@ contract Student {
             return listStudent.checkSV(_studentOwner, _password);
     }
 
-    //Chức năng thêm thông tin kĩ năng của sinh viên
+    // Chức năng thêm thông tin kĩ năng của sinh viên
     function addStudentSkill (
         address _studentOwner,
         string memory _title, 
@@ -75,40 +75,48 @@ contract Student {
             }
     }
 
-    //Chức năng lấy thông tin kĩ năng của sinh viên
+    // Chức năng lấy thông tin kĩ năng của sinh viên
     function getStudentSkill(address _studentOwner) public view returns(
         string[] memory titles,
         uint[] memory levels) {
         return listStudent.getSkill(_studentOwner);
     }
 
-    //Chức năng lấy danh sách doanh nghiệp
+    // Chức năng lấy danh sách doanh nghiệp
     function getListBusiness() public view returns(
-        address[] memory, 
-        string[] memory, 
-        string[] memory, 
-        string[] memory, 
-        string[] memory, 
-        string[] memory, 
+        address[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory,
         string[] memory,
         string[] memory) {
         return listBusiness.getListDN();
     }
 
-    //Chức năng lấy thông tin tuyển dụng của doanh nghiệp
+    // Chức năng lấy thông tin tuyển dụng của doanh nghiệp
     function getRecruit(address _businessOwner) public view returns(
-        string[] memory, 
+        string[] memory,
         string[] memory) {
         return applyCV.getRecruit(_businessOwner);
     }
 
-    // //Chức năng gửi CV tới doanh nghiệp
+    // Chức năng gửi CV tới doanh nghiệp
     function sendCV(
         address _studentOwner, 
         address _businessOwner, 
         string memory _jobTitle, 
         string memory _coverLetter) public {
             applyCV.addCV(_studentOwner, _businessOwner, _jobTitle, _coverLetter);
+    }
+
+    // Chức năng kiểm tra sinh viên đã nộp CV chưa?
+    function checkCV(
+        address _studentOwner, 
+        address _businessOwner, 
+        string memory _jobTitle) public view returns(uint x) {
+            return applyCV.checkCV(_studentOwner, _businessOwner, _jobTitle);
     }
 
     // Chức năng xem đánh giá thực tập của doanh nghiệp
@@ -138,7 +146,7 @@ contract Student {
             listBusiness.addDN(_businessOwner, _name, _country, _facebook, _website, _linkedin, _focusArea, _password);
     }
 
-    //Chức năng lấy thông tin của doanh nghiệp
+    // Chức năng lấy thông tin của doanh nghiệp
     function getBusinessProfile(address _businessOwner) public view returns(
         address businessOwner, 
         string memory name, 
@@ -162,11 +170,30 @@ contract Student {
         address[] memory, 
         address[] memory, 
         string[] memory, 
+        string[] memory,
         string[] memory) {
             return applyCV.getCV(_businessOwner);
     }
+    
+    //Chức năng duyệt CV vào vòng interview
+    function interviewCV(
+        address _studentOwner, 
+        address _businessOwner, 
+        string memory _jobTitle,
+        string memory _statusCV) public {
+            applyCV.interviewCV(_studentOwner, _businessOwner, _jobTitle, _statusCV);
+    }
 
-    //Chức năng thêm thông tin tuyển dụng của doanh nghiệp
+    //Chức năng duyệt CV vào vòng onboard
+    function onboardCV(
+        address _studentOwner, 
+        address _businessOwner, 
+        string memory _jobTitle,
+        string memory _statusCV) public {
+            applyCV.onboardCV(_studentOwner, _businessOwner, _jobTitle, _statusCV);
+    }
+
+    // Chức năng thêm thông tin tuyển dụng của doanh nghiệp
     function addRecruit(
         address _businessOwner,
         string memory _jobTitle,

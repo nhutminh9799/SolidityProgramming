@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-//Lưu trữ danh sách doanh nghiệp
+// Lưu trữ danh sách doanh nghiệp
 contract ListBusiness {
 
-    //Khai báo cấu trúc lưu trữ thông tin doanh nghiệp
+    // Khai báo cấu trúc lưu trữ thông tin doanh nghiệp
     struct ListDN {
         address businessOwner;
         string name;
@@ -16,10 +16,10 @@ contract ListBusiness {
         string password;
     }
 
-    //Khai báo mảng để lưu trữ thông tin
+    // Khai báo mảng để lưu trữ thông tin
     ListDN[] public listDNs;
 
-    //Chức năng thêm thông tin doanh nghiệp
+    // Chức năng thêm thông tin doanh nghiệp
     function addDN (
         address _businessOwner,
         string memory _name,
@@ -41,7 +41,7 @@ contract ListBusiness {
                 );
     }
 
-    //Chức năng lấy danh sách doanh nghiệp đã thêm
+    // Chức năng lấy danh sách doanh nghiệp đã thêm
     function getListDN() public view returns(
         address[] memory, 
         string[] memory, 
@@ -72,7 +72,7 @@ contract ListBusiness {
             return (businessOwners, names, countrys, facebooks, websites, linkedins, focusAreas, passwords);
     }
 
-    //Chức năng lấy thông tin của doanh nghiệp
+    // Chức năng lấy thông tin của doanh nghiệp
     function getProfile(address _businessOwner) public view returns(
         address businessOwner, 
         string memory name, 
@@ -94,7 +94,7 @@ contract ListBusiness {
             }
     }
 
-    //Chức năng kiểm tra doanh nghiệp đã đăng ký hay chưa?
+    // Chức năng kiểm tra doanh nghiệp đã đăng ký hay chưa?
     function checkDN(
         address _businessOwner, 
         string memory _password) public view returns(uint x) {
