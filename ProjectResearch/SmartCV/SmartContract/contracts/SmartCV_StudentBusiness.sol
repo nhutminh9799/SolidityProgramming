@@ -51,6 +51,11 @@ contract StudentBusiness {
             return listStudent.checkSV(_studentOwner, _password);
     }
 
+    // Chức năng kiểm tra địa chỉ sinh viên có tồn tại hay không?
+    function checkExistStudent(address _studentOwner) public view returns(uint x) {
+            return listStudent.checkExistSV(_studentOwner);
+    }
+
     // Chức năng thêm thông tin kĩ năng của sinh viên
     function addStudentSkill (
         address _studentOwner,

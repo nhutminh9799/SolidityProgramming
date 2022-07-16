@@ -115,6 +115,15 @@ contract ListStudent {
             }
     }
 
+    // Chức năng kiểm tra địa chỉ sinh viên đã tồn tại hay chưa?
+    function checkExistSV(address _studentOwner) public view returns(uint x) {
+            for(uint i=0; i<listSVs.length; i++){
+                if(listSVs[i].studentOwner == _studentOwner){
+                    return 1;
+                }
+            }
+    }
+
     // Chức năng thêm thông tin kĩ năng của sinh viên
     function addSkill(
         address _studentOwner,
