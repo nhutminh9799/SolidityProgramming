@@ -65,14 +65,14 @@ contract StudentBusiness {
     }
 
     // Chức năng kiểm tra kĩ năng của sinh viên có tồn tại hay không?
-    function checkStudentSkilll(
+    function checkStudentSkill(
         address _studentOwner, 
         string memory _title) public view returns(uint x) {
             return listStudent.checkSkill(_studentOwner, _title);
     }
 
     // Chức năng kiểm tra số lượng kĩ năng của sinh viên
-    function checkNumStudentSkilll(
+    function checkNumStudentSkill(
         address _studentOwner) public view returns(uint x) {
             uint _count = listStudent.checkNumSkill(_studentOwner);
             if(_count > 10){
