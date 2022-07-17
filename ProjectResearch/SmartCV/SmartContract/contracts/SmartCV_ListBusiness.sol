@@ -104,5 +104,14 @@ contract ListBusiness {
                 }
             }
     }
+
+    // Chức năng kiểm tra địa chỉ doanh nghiệp đã tồn tại hay chưa?
+    function checkExistDN(address _businessOwner) public view returns(uint x) {
+            for(uint i=0; i<listDNs.length; i++){
+                if(listDNs[i].businessOwner == _businessOwner){
+                    return 1;
+                }
+            }
+    }
     
 }
