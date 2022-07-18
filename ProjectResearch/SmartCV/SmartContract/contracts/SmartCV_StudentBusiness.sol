@@ -4,6 +4,7 @@ pragma solidity >=0.4.22 <0.9.0;
 // Import các contract cần thiết để sử dụng
 import "./SmartCV_ListStudent.sol";
 import "./SmartCV_ListBusiness.sol";
+import "./SmartCV_ListIIG.sol";
 import "./SmartCV_Apply.sol";
 
 // CV dành cho sinh viên
@@ -12,6 +13,7 @@ contract StudentBusiness {
     // Khai contract đã import để sử dụng các function ở contract đó
     ListStudent listStudent = new ListStudent();
     ListBusiness listBusiness = new ListBusiness();
+    ListIIG listIIG = new ListIIG();
     ApplyCV applyCV = new ApplyCV();
 
     // ======================================
@@ -57,7 +59,7 @@ contract StudentBusiness {
     }
 
     // Chức năng thêm thông tin kĩ năng của sinh viên
-    function addStudentSkill (
+    function addStudentSkill(
         address _studentOwner,
         string memory _title, 
         uint _level) public {
@@ -66,7 +68,7 @@ contract StudentBusiness {
 
     // Chức năng kiểm tra kĩ năng của sinh viên có tồn tại hay không?
     function checkStudentSkill(
-        address _studentOwner, 
+        address _studentOwner,
         string memory _title) public view returns(uint x) {
             return listStudent.checkSkill(_studentOwner, _title);
     }
@@ -139,7 +141,7 @@ contract StudentBusiness {
     // ======================================
 
     // Chức năng thêm thông tin doanh nghiệp (Đăng ký)
-    function addBusinessProfile (
+    function addBusinessProfile(
         address _businessOwner,
         string memory _name,
         string memory _country,
@@ -217,5 +219,78 @@ contract StudentBusiness {
         address _businessOwner, 
         string memory _content) public {
             applyCV.addReview(_studentOwner, _businessOwner, _content);
+    }
+
+    // ======================================
+    // ========= Chức năng cho IIG ==========
+    // ======================================
+
+    // Chức năng thêm thông tin IIG (Đăng ký)
+    function addIIGProfile(
+        address _iigOwner,
+        string memory _name,
+        string memory _country,
+        string memory _facebook,
+        string memory _website,
+        string memory _linkedin,
+        string memory _password) public {
+            listIIG.addIIG(_iigOwner, _name, _country, _facebook, _website, _linkedin, _password);
+    }
+
+    // Chức năng lấy thông tin của IIG
+    function getIIGProfile(address _iigOwner) public view returns(
+        address iigOwner, 
+        string memory name, 
+        string memory country, 
+        string memory facebook, 
+        string memory website, 
+        string memory linkedin) {
+            return listIIG.getProfile(_iigOwner);
+    }
+
+    // Chức năng kiểm tra tài khoản IIG có tồn tại hay không? (Đăng nhập)
+    function checkIIGProfile(
+        address _iigOwner, 
+        string memory _password) public view returns(uint) {
+            return listIIG.checkIIG(_iigOwner, _password);
+    }
+
+    // Chức năng kiểm tra địa chỉ IIG có tồn tại hay không?
+    function checkExistIIG(address _iigOwner) public view returns(uint x) {
+            return listIIG.checkExistIIG(_iigOwner);
+    }
+
+    // Chức năng nhập thông tin điểm thi Listening - Reading
+    function addIIGLRResult (
+        address _iigOwner,
+        address _studentOwner,
+        string memory _testDate,
+        uint _listeningScore,
+        uint _readingScore) public {
+            listIIG.addLRResult(_iigOwner, _studentOwner, _testDate, _listeningScore, _readingScore);
+    }
+
+    // Chức năng nhập thông tin điểm thi Speaking - Writing
+    function addIIGSWResult (
+        address _iigOwner,
+        address _studentOwner,
+        string memory _testDate,
+        uint _speakingScore,
+        uint _writingScore) public {
+            listIIG.addSWResult(_iigOwner, _studentOwner, _testDate, _speakingScore, _writingScore);
+    }
+
+    // Chức năng lấy thông tin điểm thi Listening - Reading
+    function getIIGRCResult(address _studentOwner) public view returns(
+        address studentOwners,
+        uint maxScore) {
+            return listIIG.getRCResult(_studentOwner);
+    }
+
+    // Chức năng lấy thông tin điểm thi Speaking - Writing
+    function getIIGSWResult(address _studentOwner) public view returns(
+        address studentOwners,
+        uint maxScore) {
+            return listIIG.getSWResult(_studentOwner);
     }
 }
