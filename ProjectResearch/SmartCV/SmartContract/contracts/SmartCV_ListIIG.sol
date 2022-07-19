@@ -129,13 +129,15 @@ contract ListIIG {
             }
     }
 
-    // Chức năng thêm thông tin điểm thi Listening - Reading
+    // Chức năng thêm thông tin điểm thi Listening - Reading (Kiểm tra có nhập nhiều lần thi của 1 sinh viên chung 1 ngày không?)
     function addLRResult (
         address _iigOwner,
         address _studentOwner,
         string memory _testDate,
         uint _listeningScore,
         uint _readingScore) public {
+            require(_listeningScore >=0 && _listeningScore <=495, "Listening Score incorrect.");
+            require(_readingScore >=0 && _readingScore <=495, "Reading Score incorrect.");
             iigLRResults.push(
                 IIGLRResult(_iigOwner, 
                         _studentOwner, 
@@ -199,6 +201,8 @@ contract ListIIG {
         string memory _testDate,
         uint _speakingScore,
         uint _writingScore) public {
+            require(_speakingScore >=0 && _speakingScore <=200, "Speaking Score incorrect.");
+            require(_writingScore >=0 && _writingScore <=200, "Writing Score incorrect.");
             iigSWResults.push(
                 IIGSWResult(_iigOwner, 
                         _studentOwner, 
