@@ -176,7 +176,7 @@ contract ListIIG {
     }
 
     // Chức năng lấy thông tin điểm thi Listening - Reading
-    function getRCResult(address _studentOwner) public view returns(
+    function getLRResult(address _studentOwner) public view returns(
         address studentOwners,
         uint maxScore) {
             uint[] memory totalScores = new uint[](iigLRResults.length);
@@ -192,6 +192,17 @@ contract ListIIG {
                 }
             }
             return (_studentOwner, maxScore);
+    }
+
+    // Chức năng kiểm tra kết quả ngày thi Listening - Reading của sinh viên đã tồn tại hay chưa?
+    function checkExistLRResult(
+        address _studentOwner, 
+        string memory _testDate) public view returns(uint x) {
+            for(uint i=0; i<iigLRResults.length; i++){
+                if((iigLRResults[i].studentOwner == _studentOwner) && (keccak256(bytes(iigLRResults[i].testDate)) == keccak256(bytes(_testDate)))){
+                    return 1;
+                }
+            }
     }
 
     // Chức năng thêm thông tin điểm thi Speaking - Writing
@@ -259,4 +270,14 @@ contract ListIIG {
             return (_studentOwner, maxScore);
     }
     
+    // Chức năng kiểm tra kết quả ngày thi Speaking - Writing của sinh viên đã tồn tại hay chưa?
+    function checkExistSWResult(
+        address _studentOwner, 
+        string memory _testDate) public view returns(uint x) {
+            for(uint i=0; i<iigSWResults.length; i++){
+                if((iigSWResults[i].studentOwner == _studentOwner) && (keccak256(bytes(iigSWResults[i].testDate)) == keccak256(bytes(_testDate)))){
+                    return 1;
+                }
+            }
+    }
 }

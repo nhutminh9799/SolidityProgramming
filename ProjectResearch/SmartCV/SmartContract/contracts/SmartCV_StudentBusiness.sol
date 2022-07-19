@@ -284,7 +284,7 @@ contract StudentBusiness {
     function getIIGRCResult(address _studentOwner) public view returns(
         address studentOwners,
         uint maxScore) {
-            return listIIG.getRCResult(_studentOwner);
+            return listIIG.getLRResult(_studentOwner);
     }
 
     // Chức năng lấy thông tin điểm thi Speaking - Writing
@@ -292,5 +292,19 @@ contract StudentBusiness {
         address studentOwners,
         uint maxScore) {
             return listIIG.getSWResult(_studentOwner);
+    }
+
+    // Chức năng kiểm tra kết quả ngày thi Listening - Reading của sinh viên đã tồn tại hay chưa?
+    function checkExistIIGLRResult(
+        address _studentOwner,
+        string memory _testDate) public view returns(uint x) {
+            return listIIG.checkExistLRResult(_studentOwner, _testDate);
+    }
+
+    // Chức năng kiểm tra kết quả ngày thi Speaking - Writing của sinh viên đã tồn tại hay chưa?
+    function checkExistIIGSWResult(
+        address _studentOwner,
+        string memory _testDate) public view returns(uint x) {
+            return listIIG.checkExistSWResult(_studentOwner, _testDate);
     }
 }
