@@ -41,6 +41,27 @@ contract ListBusiness {
                 );
     }
 
+    // Chức năng chỉnh sửa thông tin doanh nghiệp
+    function editDN (
+        address _businessOwner,
+        string memory _name,
+        string memory _country,
+        string memory _facebook,
+        string memory _website,
+        string memory _linkedin,
+        string memory _focusArea) public {
+            for(uint i=0; i<listDNs.length;i++){
+                if(listDNs[i].businessOwner == _businessOwner){
+                    listDNs[i].name = _name;
+                    listDNs[i].country = _country;
+                    listDNs[i].facebook = _facebook;
+                    listDNs[i].website = _website;
+                    listDNs[i].linkedin = _linkedin; 
+                    listDNs[i].focusArea = _focusArea;
+                }
+            }
+    }
+
     // Chức năng lấy danh sách doanh nghiệp đã thêm
     function getListDN() public view returns(
         address[] memory, 
