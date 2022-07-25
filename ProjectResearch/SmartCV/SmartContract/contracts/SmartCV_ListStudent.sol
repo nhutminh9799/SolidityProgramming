@@ -49,6 +49,27 @@ contract ListStudent {
                 );
     }
 
+    // Chức năng chỉnh sửa thông tin sinh viên
+    function editSV (
+        address _studentOwner,
+        string memory _name,
+        string memory _birthDay,
+        string memory _professionalTitle,
+        string memory _email,
+        string memory _github,
+        string memory _linkedin) public {
+            for(uint i=0; i<listSVs.length;i++){
+                if(listSVs[i].studentOwner == _studentOwner){
+                    listSVs[i].name = _name;
+                    listSVs[i].birthDay = _birthDay;
+                    listSVs[i].professionalTitle = _professionalTitle;
+                    listSVs[i].email = _email;
+                    listSVs[i].github = _github; 
+                    listSVs[i].linkedin = _linkedin;
+                }
+            }
+    }
+
     // Chức năng lấy danh sách sinh viên đã thêm
     function getListSV() public view returns(
         address[] memory, 
@@ -130,7 +151,25 @@ contract ListStudent {
         string memory _title, 
         uint _level) public {
             require(_level >=0 && _level <=100, "Level of skill incorrect."); //Mức độ của kĩ năng được tính theo thang điểm từ 0 đến 100
-            listSkills.push(ListSkill(_studentOwner, _title, _level));
+            listSkills.push(
+                ListSkill(_studentOwner, 
+                            _title, 
+                            _level)
+                );
+    }
+
+    // Chức năng chỉnh sửa thông tin kĩ năng của sinh viên
+    function editSkill (
+        address _studentOwner,
+        string memory _title, 
+        uint _level) public {
+            for(uint i=0; i<listSkills.length;i++){
+                if(listSkills[i].studentOwner == _studentOwner){
+                    listSkills[i].studentOwner = _studentOwner;
+                    listSkills[i].title = _title;
+                    listSkills[i].level = _level;
+                }
+            }
     }
 
     // Chức năng kiểm tra sinh viên đã thêm kĩ năng đó hay chưa?
