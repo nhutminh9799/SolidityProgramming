@@ -30,7 +30,32 @@ contract StudentBusiness {
         string memory _github,
         string memory _linkedin,
         string memory _password) public {
-            listStudent.addSV(_studentOwner, _name, _birthDay, _professionalTitle, _email, _github, _linkedin, _password);
+            listStudent.addSV(_studentOwner, 
+                                _name, 
+                                _birthDay, 
+                                _professionalTitle, 
+                                _email, 
+                                _github, 
+                                _linkedin, 
+                                _password);
+    }
+
+    // Chức năng chỉnh thông tin sinh viên
+    function editStudentProfile (
+        address _studentOwner,
+        string memory _name,
+        string memory _birthDay,
+        string memory _professionalTitle,
+        string memory _email,
+        string memory _github,
+        string memory _linkedin) public {
+            listStudent.editSV(_studentOwner, 
+                                _name, 
+                                _birthDay, 
+                                _professionalTitle, 
+                                _email, 
+                                _github, 
+                                _linkedin);
     }
 
     // Chức năng lấy thông tin của sinh viên
@@ -63,7 +88,19 @@ contract StudentBusiness {
         address _studentOwner,
         string memory _title, 
         uint _level) public {
-            listStudent.addSkill(_studentOwner, _title, _level);
+            listStudent.addSkill(_studentOwner, 
+                                _title, 
+                                _level);
+    }
+
+    // Chức năng chỉnh sửa thông tin kĩ năng của sinh viên
+    function editStudentSkill(
+        address _studentOwner,
+        string memory _title, 
+        uint _level) public {
+            listStudent.editSkill(_studentOwner, 
+                                _title, 
+                                _level);
     }
 
     // Chức năng kiểm tra kĩ năng của sinh viên có tồn tại hay không?
@@ -115,7 +152,10 @@ contract StudentBusiness {
         address _businessOwner, 
         string memory _jobTitle, 
         string memory _coverLetter) public {
-            applyCV.addCV(_studentOwner, _businessOwner, _jobTitle, _coverLetter);
+            applyCV.addCV(_studentOwner, 
+                        _businessOwner, 
+                        _jobTitle, 
+                        _coverLetter);
     }
 
     // Chức năng kiểm tra sinh viên đã nộp CV chưa?
@@ -123,7 +163,9 @@ contract StudentBusiness {
         address _studentOwner, 
         address _businessOwner, 
         string memory _jobTitle) public view returns(uint x) {
-            return applyCV.checkCV(_studentOwner, _businessOwner, _jobTitle);
+            return applyCV.checkCV(_studentOwner, 
+                                    _businessOwner, 
+                                    _jobTitle);
     }
 
     // Chức năng xem đánh giá thực tập của doanh nghiệp
@@ -150,7 +192,32 @@ contract StudentBusiness {
         string memory _linkedin,
         string memory _focusArea,
         string memory _password) public {
-            listBusiness.addDN(_businessOwner, _name, _country, _facebook, _website, _linkedin, _focusArea, _password);
+            listBusiness.addDN(_businessOwner, 
+                                _name, 
+                                _country, 
+                                _facebook, 
+                                _website, 
+                                _linkedin, 
+                                _focusArea, 
+                                _password);
+    }
+
+    // Chức năng chỉnh sửa thông tin doanh nghiệp
+    function editBusinessProfile(
+        address _businessOwner,
+        string memory _name,
+        string memory _country,
+        string memory _facebook,
+        string memory _website,
+        string memory _linkedin,
+        string memory _focusArea) public {
+            listBusiness.editDN(_businessOwner, 
+                                _name, 
+                                _country, 
+                                _facebook, 
+                                _website, 
+                                _linkedin, 
+                                _focusArea);
     }
 
     // Chức năng lấy thông tin của doanh nghiệp
@@ -193,7 +260,10 @@ contract StudentBusiness {
         address _businessOwner, 
         string memory _jobTitle,
         string memory _statusCV) public {
-            applyCV.interviewCV(_studentOwner, _businessOwner, _jobTitle, _statusCV);
+            applyCV.interviewCV(_studentOwner, 
+                                _businessOwner, 
+                                _jobTitle, 
+                                _statusCV);
     }
 
     //Chức năng duyệt CV vào vòng onboard
@@ -202,7 +272,10 @@ contract StudentBusiness {
         address _businessOwner, 
         string memory _jobTitle,
         string memory _statusCV) public {
-            applyCV.onboardCV(_studentOwner, _businessOwner, _jobTitle, _statusCV);
+            applyCV.onboardCV(_studentOwner, 
+                            _businessOwner, 
+                            _jobTitle, 
+                            _statusCV);
     }
 
     // Chức năng thêm thông tin tuyển dụng của doanh nghiệp
@@ -210,7 +283,9 @@ contract StudentBusiness {
         address _businessOwner,
         string memory _jobTitle,
         string memory _jobDescription) public {
-            applyCV.addRecruit(_businessOwner, _jobTitle, _jobDescription);
+            applyCV.addRecruit(_businessOwner, 
+                                _jobTitle, 
+                                _jobDescription);
     }
 
     // Chức năng đánh giá thực tập cho sinh viên
@@ -218,7 +293,9 @@ contract StudentBusiness {
         address _studentOwner, 
         address _businessOwner, 
         string memory _content) public {
-            applyCV.addReview(_studentOwner, _businessOwner, _content);
+            applyCV.addReview(_studentOwner, 
+                            _businessOwner, 
+                            _content);
     }
 
     // ======================================
@@ -234,7 +311,13 @@ contract StudentBusiness {
         string memory _website,
         string memory _linkedin,
         string memory _password) public {
-            listIIG.addIIG(_iigOwner, _name, _country, _facebook, _website, _linkedin, _password);
+            listIIG.addIIG(_iigOwner, 
+                            _name, 
+                            _country, 
+                            _facebook, 
+                            _website, 
+                            _linkedin, 
+                            _password);
     }
 
     // Chức năng lấy thông tin của IIG
@@ -260,14 +343,48 @@ contract StudentBusiness {
             return listIIG.checkExistIIG(_iigOwner);
     }
 
+    // Chức năng gửi thông tin yêu cầu chứng chỉ IIG
+    function sendIIGRequest (
+        address _studentOwner,
+        address _iigOwner) public {
+            listIIG.addRequest(_studentOwner, 
+                            _iigOwner);
+    }
+
+    // Chức năng lấy danh sách yêu cầu chứng chỉ IIG
+    function getListIIGRequest(address _iigOwner) public view returns(
+        address[] memory, 
+        address[] memory, 
+        string[] memory) {
+            return listIIG.getListRequest(_iigOwner);
+    }
+
+    //Chức năng duyệt yêu cầu chứng chỉ IIG
+    function confirmIIGRequest(
+        address _studentOwner, 
+        address _iigOwner, 
+        string memory _statusRequest) public {
+            listIIG.confirmRequest(_studentOwner,
+                                    _iigOwner,
+                                    _statusRequest);
+    }
+
     // Chức năng nhập thông tin điểm thi Listening - Reading
     function addIIGLRResult (
         address _iigOwner,
         address _studentOwner,
         string memory _testDate,
+        string memory _shiftTest,
+        string memory _expireDate,
         uint _listeningScore,
         uint _readingScore) public {
-            listIIG.addLRResult(_iigOwner, _studentOwner, _testDate, _listeningScore, _readingScore);
+            listIIG.addLRResult(_iigOwner, 
+                                _studentOwner, 
+                                _testDate,
+                                _shiftTest, 
+                                _expireDate, 
+                                _listeningScore, 
+                                _readingScore);
     }
 
     // Chức năng nhập thông tin điểm thi Speaking - Writing
@@ -275,36 +392,58 @@ contract StudentBusiness {
         address _iigOwner,
         address _studentOwner,
         string memory _testDate,
+        string memory _shiftTest,
+        string memory _expireDate,
         uint _speakingScore,
         uint _writingScore) public {
-            listIIG.addSWResult(_iigOwner, _studentOwner, _testDate, _speakingScore, _writingScore);
+            listIIG.addSWResult(_iigOwner, 
+                                _studentOwner, 
+                                _testDate,
+                                _shiftTest,
+                                _expireDate, 
+                                _speakingScore, 
+                                _writingScore);
     }
 
-    // Chức năng lấy thông tin điểm thi Listening - Reading
-    function getIIGRCResult(address _studentOwner) public view returns(
-        address studentOwners,
-        uint maxScore) {
-            return listIIG.getLRResult(_studentOwner);
-    }
+    //Chức năng lấy thông tin điểm thi Listening - Reading
+    function getIIGLRResult(address _iigOwner, address _studentOwner) public view returns(
+        string[] memory,
+        string[] memory,
+        string[] memory,
+        uint[] memory,
+        uint[] memory,
+        uint[] memory) {
+            return listIIG.getListLRResult(_iigOwner, _studentOwner);
+        }
 
-    // Chức năng lấy thông tin điểm thi Speaking - Writing
-    function getIIGSWResult(address _studentOwner) public view returns(
-        address studentOwners,
-        uint maxScore) {
-            return listIIG.getSWResult(_studentOwner);
-    }
+    //Chức năng lấy thông tin điểm thi Speaking - Writing
+    function getIIGSWResult(address _iigOwner, address _studentOwner) public view returns(
+        string[] memory,
+        string[] memory,
+        string[] memory,
+        uint[] memory,
+        uint[] memory,
+        uint[] memory) {
+            return listIIG.getListSWResult(_iigOwner, _studentOwner);
+        }
 
     // Chức năng kiểm tra kết quả ngày thi Listening - Reading của sinh viên đã tồn tại hay chưa?
     function checkExistIIGLRResult(
         address _studentOwner,
-        string memory _testDate) public view returns(uint x) {
-            return listIIG.checkExistLRResult(_studentOwner, _testDate);
+        string memory _testDate,
+        string memory _shiftTest) public view returns(uint x) {
+            return listIIG.checkExistLRResult(_studentOwner, 
+                                            _testDate, 
+                                            _shiftTest);
     }
 
     // Chức năng kiểm tra kết quả ngày thi Speaking - Writing của sinh viên đã tồn tại hay chưa?
     function checkExistIIGSWResult(
         address _studentOwner,
-        string memory _testDate) public view returns(uint x) {
-            return listIIG.checkExistSWResult(_studentOwner, _testDate);
+        string memory _testDate,
+        string memory _shiftTest) public view returns(uint x) {
+            return listIIG.checkExistSWResult(_studentOwner, 
+                                            _testDate, 
+                                            _shiftTest);
     }
 }
