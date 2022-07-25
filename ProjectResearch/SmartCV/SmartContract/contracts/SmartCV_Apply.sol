@@ -38,7 +38,13 @@ contract ApplyCV {
         address _businessOwner, 
         string memory _jobTitle, 
         string memory _coverLetter) public {
-            cvs.push(CV(_studentOwner, _businessOwner, _jobTitle, _coverLetter, "Screening"));
+            cvs.push(
+                CV(_studentOwner, 
+                    _businessOwner, 
+                    _jobTitle, 
+                    _coverLetter, 
+                    "Screening")
+                );
     }
 
     // Chức năng kiểm tra sinh viên đã nộp CV chưa?
@@ -108,7 +114,11 @@ contract ApplyCV {
         address _businessOwner,
         string memory _jobTitle,
         string memory _jobDescription) public {
-            recruits.push(Recruit(_businessOwner, _jobTitle, _jobDescription));
+            recruits.push(
+                Recruit(_businessOwner, 
+                        _jobTitle, 
+                        _jobDescription)
+                );
     }
 
     // Chức năng lấy thông tin tuyển dụng
@@ -131,7 +141,11 @@ contract ApplyCV {
         address _studentOwner, 
         address _businessOwner, 
         string memory _content) public {
-            reviews.push(Review(_studentOwner, _businessOwner, _content));
+            reviews.push(
+                Review(_studentOwner, 
+                        _businessOwner, 
+                        _content)
+                );
     }
 
     // Chức năng lấy thông tin đánh giá thực tập
