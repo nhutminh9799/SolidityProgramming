@@ -19,6 +19,7 @@ contract ListIIG {
     struct IIGRequest {
         address studentOwner;
         address iigOwner;
+        string identityCard;
         string statusRequest;
     }
 
@@ -70,6 +71,25 @@ contract ListIIG {
                         _linkedin, 
                         _password)
                 );
+    }
+
+    // Chức năng chỉnh sửa thông tin IGG
+    function editIIG (
+        address _iigOwner,
+        string memory _name,
+        string memory _country,
+        string memory _facebook,
+        string memory _website,
+        string memory _linkedin) public {
+            for(uint i=0; i<iigInfos.length;i++){
+                if(iigInfos[i].iigOwner == _iigOwner){
+                    iigInfos[i].name = _name;
+                    iigInfos[i].country = _country;
+                    iigInfos[i].facebook = _facebook;
+                    iigInfos[i].website = _website;
+                    iigInfos[i].linkedin = _linkedin;
+                }
+            }
     }
 
     // Chức năng lấy danh sách IIG đã thêm
@@ -143,10 +163,12 @@ contract ListIIG {
     // Chức năng thêm thông tin yêu cầu chứng chỉ IIG
     function addRequest (
         address _studentOwner,
-        address _iigOwner) public {
+        address _iigOwner,
+        string memory _identityCard) public {
             iigRequests.push(
                 IIGRequest(_studentOwner, 
-                        _iigOwner, 
+                        _iigOwner,
+                        _identityCard,
                         "Waiting")
                 );
     }
@@ -154,19 +176,22 @@ contract ListIIG {
     // Chức năng lấy danh sách yêu cầu chứng chỉ IIG
     function getListRequest(address _iigOwner) public view returns(
         address[] memory, 
-        address[] memory, 
+        address[] memory,
+        string[] memory,
         string[] memory) {
             address[] memory studentOwners = new address[](iigRequests.length);
             address[] memory iigOwners = new address[](iigRequests.length);
+            string[] memory identityCards = new string[](iigRequests.length);
             string[] memory statusRequests = new string[](iigRequests.length);
             for(uint i=0; i<iigRequests.length;i++){
                 if(iigRequests[i].iigOwner == _iigOwner){
                     studentOwners[i] = iigRequests[i].studentOwner;
                     iigOwners[i] = iigRequests[i].iigOwner;
+                    identityCards[i] = iigRequests[i].identityCard;
                     statusRequests[i] = iigRequests[i].statusRequest;
                 }
             }
-            return (studentOwners, iigOwners, statusRequests);
+            return (studentOwners, iigOwners, identityCards, statusRequests);
     }
 
     //Chức năng duyệt yêu cầu chứng chỉ IIG
