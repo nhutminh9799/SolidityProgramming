@@ -16,8 +16,11 @@ contract ApplyCV {
     // Khai báo cấu trúc lưu trữ thông tin tuyển dụng
     struct Recruit {
         address businessOwner;
+        bytes32 codeRecruit;
         string jobTitle;
         string jobDescription;
+        string recruitDate;
+        uint amount;
     }
 
     // Khai báo cấu trúc lưu trữ thông tin đánh giá thực tập
@@ -39,10 +42,10 @@ contract ApplyCV {
         string memory _jobTitle, 
         string memory _coverLetter) public {
             cvs.push(
-                CV(_studentOwner, 
-                    _businessOwner, 
-                    _jobTitle, 
-                    _coverLetter, 
+                CV(_studentOwner,
+                    _businessOwner,
+                    _jobTitle,
+                    _coverLetter,
                     "Screening")
                 );
     }
@@ -109,31 +112,68 @@ contract ApplyCV {
             return (studentOwners, businessOwners, jobTitles, coverLetters, statusCVs);
     }
 
+    // Chức năng kiểm tra số lượng CV nộp vào theo doanh nghiệp
+    function checkNumCV(address _businessOwner) public view returns(uint x) {
+            uint _count = 0;
+            for(uint i=0; i<cvs.length; i++){
+                if(cvs[i].businessOwner == _businessOwner){
+                    _count += 1;
+                }
+            }
+            return _count;
+    }
+
     // Chức năng thêm thông tin tuyển dụng
     function addRecruit(
         address _businessOwner,
         string memory _jobTitle,
-        string memory _jobDescription) public {
+        string memory _jobDescription,
+        string memory _recruitDate,
+        uint _amount) public {
             recruits.push(
-                Recruit(_businessOwner, 
-                        _jobTitle, 
-                        _jobDescription)
+                Recruit(_businessOwner,
+                        keccak256(bytes(string(abi.encodePacked(_jobTitle, _recruitDate)))),
+                        _jobTitle,
+                        _jobDescription,
+                        _recruitDate,
+                        _amount)
                 );
+    }
+
+    // Chức năng kiểm tra số lượng tuyển dụng
+    function checkAmountRecruit(
+        address _businessOwner,
+        string memory _jobTitle,
+        string memory _recruitDate) public view returns(uint x) {
+            for(uint i=0; i<recruits.length; i++){
+                if((recruits[i].businessOwner == _businessOwner) && (recruits[i].codeRecruit == keccak256(bytes(string(abi.encodePacked(_jobTitle, _recruitDate)))))){
+                    return recruits[i].amount;
+                }
+            }
     }
 
     // Chức năng lấy thông tin tuyển dụng
     function getRecruit(address _businessOwner) public view returns(
+        bytes32[] memory,
         string[] memory, 
-        string[] memory) {
+        string[] memory,
+        string[] memory,
+        uint[] memory) {
+            bytes32[] memory codeRecruits = new bytes32[](recruits.length);
             string[] memory jobTitles = new string[](recruits.length);
             string[] memory jobDescriptions = new string[](recruits.length);
+            string[] memory recruitDates = new string[](recruits.length);
+            uint[] memory amounts = new uint[](recruits.length);
             for(uint i=0; i<recruits.length;i++){
                 if(recruits[i].businessOwner == _businessOwner) {
+                    codeRecruits[i] = recruits[i].codeRecruit;
                     jobTitles[i] = recruits[i].jobTitle;
                     jobDescriptions[i] = recruits[i].jobDescription;
+                    recruitDates[i] = recruits[i].recruitDate;
+                    amounts[i] = recruits[i].amount;
                 }
             }
-            return (jobTitles, jobDescriptions);
+            return (codeRecruits, jobTitles, jobDescriptions, recruitDates, amounts);
     }
 
     // Chức năng lưu trữ đánh giá thực tập của từng sinh viên
@@ -163,5 +203,4 @@ contract ApplyCV {
                     }
                 }
     }
-
 }
