@@ -411,6 +411,18 @@ contract StudentBusiness {
                             _linkedin);
     }
 
+    // Chức năng lấy danh sách IIG
+    function getListIIG() public view returns(
+        address[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory) {
+            return listIIG.getListIIG();
+    }
+
     // Chức năng lấy thông tin của IIG
     function getIIGProfile(address _iigOwner) public view returns(
         address iigOwner,
