@@ -8,11 +8,12 @@ contract ListStudent {
     struct ListSV {
         address studentOwner;
         string name; 
-        string birthDay; 
+        string phoneNumber; 
         string professionalTitle;
         string email;
-        string github; 
+        string github;
         string linkedin;
+        string sourceImage;
         string password;
     }
 
@@ -23,28 +24,41 @@ contract ListStudent {
         uint level;
     }
 
+    // Khai báo cấu trúc lưu trữ thông tin học vấn của sinh viên
+    struct ListEducation {
+        address studentOwner;
+        string institution; 
+        string focusArea; 
+        string startTime;
+        string finishTime;
+        string gpa;
+    }
+
     // Khai báo các mảng để lưu trữ thông tin
     ListSV[] public listSVs;
     ListSkill[] public listSkills;
+    ListEducation[] public listEducations;
 
     // Chức năng thêm thông tin sinh viên
     function addSV (
         address _studentOwner,
         string memory _name,
-        string memory _birthDay,
+        string memory _phoneNumber,
         string memory _professionalTitle,
         string memory _email,
         string memory _github,
-        string memory _linked,
+        string memory _linkedin,
+        string memory _sourceImage,
         string memory _password) public {
             listSVs.push(
                 ListSV(_studentOwner, 
                         _name, 
-                        _birthDay, 
+                        _phoneNumber, 
                         _professionalTitle, 
                         _email, 
                         _github, 
-                        _linked, 
+                        _linkedin,
+                        _sourceImage,
                         _password)
                 );
     }
@@ -53,19 +67,21 @@ contract ListStudent {
     function editSV (
         address _studentOwner,
         string memory _name,
-        string memory _birthDay,
+        string memory _phoneNumber,
         string memory _professionalTitle,
         string memory _email,
         string memory _github,
-        string memory _linkedin) public {
+        string memory _linkedin,
+        string memory _sourceImage) public {
             for(uint i=0; i<listSVs.length;i++){
                 if(listSVs[i].studentOwner == _studentOwner){
                     listSVs[i].name = _name;
-                    listSVs[i].birthDay = _birthDay;
+                    listSVs[i].phoneNumber = _phoneNumber;
                     listSVs[i].professionalTitle = _professionalTitle;
                     listSVs[i].email = _email;
                     listSVs[i].github = _github; 
                     listSVs[i].linkedin = _linkedin;
+                    listSVs[i].sourceImage = _sourceImage;
                 }
             }
     }
@@ -82,44 +98,46 @@ contract ListStudent {
         string[] memory) {
             address[] memory studentOwners = new address[](listSVs.length);
             string[] memory names = new string[](listSVs.length);
-            string[] memory birthDays = new string[](listSVs.length);
+            string[] memory phoneNumbers = new string[](listSVs.length);
             string[] memory professionalTitles = new string[](listSVs.length);
             string[] memory emails = new string[](listSVs.length);
             string[] memory githubs = new string[](listSVs.length);
             string[] memory linkedins = new string[](listSVs.length);
-            string[] memory passwords = new string[](listSVs.length);
+            string[] memory sourceImages = new string[](listSVs.length);
             for(uint i=0; i<listSVs.length;i++){
                 studentOwners[i] = listSVs[i].studentOwner;
                 names[i] = listSVs[i].name;
-                birthDays[i] = listSVs[i].birthDay;
+                phoneNumbers[i] = listSVs[i].phoneNumber;
                 professionalTitles[i] = listSVs[i].professionalTitle;
                 emails[i] = listSVs[i].email;
                 githubs[i] = listSVs[i].github;
                 linkedins[i] = listSVs[i].linkedin;
-                passwords[i] = listSVs[i].password;
+                sourceImages[i] = listSVs[i].sourceImage;
             }
-            return (studentOwners, names, birthDays, professionalTitles, emails, githubs, linkedins, passwords);
+            return (studentOwners, names, phoneNumbers, professionalTitles, emails, githubs, linkedins, sourceImages);
     }
 
     // Chức năng lấy thông tin của sinh viên
     function getProfile(address _studentOwner) public view returns(
         address studentOwner, 
         string memory name, 
-        string memory birthDay, 
+        string memory phoneNumber, 
         string memory professionalTitle, 
         string memory email, 
         string memory github, 
         string memory linkedin,
+        string memory sourceImage,
         string memory password) {
             for(uint i=0; i<listSVs.length;i++){
                 if(listSVs[i].studentOwner == _studentOwner){
                     return (listSVs[i].studentOwner,
                             listSVs[i].name, 
-                            listSVs[i].birthDay, 
+                            listSVs[i].phoneNumber, 
                             listSVs[i].professionalTitle, 
                             listSVs[i].email, 
                             listSVs[i].github, 
                             listSVs[i].linkedin,
+                            listSVs[i].sourceImage,
                             listSVs[i].password);
                 }
             }
@@ -159,7 +177,7 @@ contract ListStudent {
     }
 
     // Chức năng chỉnh sửa thông tin kĩ năng của sinh viên
-    function editSkill (
+    function editSkill(
         address _studentOwner,
         string memory _title, 
         uint _level) public {
@@ -184,8 +202,7 @@ contract ListStudent {
     }
 
     // Chức năng đếm số lượng kĩ năng của sinh viên
-    function checkNumSkill(
-        address _studentOwner) public view returns(uint x) {
+    function checkNumSkill(address _studentOwner) public view returns(uint x) {
             uint _count = 0;
             for(uint i=0; i<listSkills.length; i++){
                 if(listSkills[i].studentOwner == _studentOwner){
@@ -209,5 +226,78 @@ contract ListStudent {
             }
             return (titles, levels);
     }
-    
+
+    // Chức năng thêm thông tin học vấn của sinh viên
+    function addEducation(
+        address _studentOwner,
+        string memory _institution,
+        string memory _focusArea, 
+        string memory _startTime,
+        string memory _finishTime,
+        string memory _gpa) public {
+            listEducations.push(
+                ListEducation(_studentOwner, 
+                            _institution, 
+                            _focusArea,
+                            _startTime,
+                            _finishTime,
+                            _gpa)
+                );
+    }
+
+    // Chức năng chỉnh sửa thông tin học vấn của sinh viên
+    function editEducation(
+        address _studentOwner,
+        string memory _institution,
+        string memory _focusArea, 
+        string memory _startTime,
+        string memory _finishTime,
+        string memory _gpa) public {
+            for(uint i=0; i<listEducations.length;i++){
+                if(listEducations[i].studentOwner == _studentOwner){
+                    listEducations[i].studentOwner = _studentOwner;
+                    listEducations[i].institution = _institution;
+                    listEducations[i].focusArea = _focusArea;
+                    listEducations[i].startTime = _startTime;
+                    listEducations[i].finishTime = _finishTime;
+                    listEducations[i].gpa = _gpa;
+                }
+            }
+    }
+
+    // Chức năng kiểm tra sinh viên đã thêm học vấn đó hay chưa?
+    function checkEducation(
+        address _studentOwner, 
+        string memory _institution,
+        string memory _focusArea) public view returns(uint x) {
+            for(uint i=0; i<listEducations.length; i++){
+                if((listEducations[i].studentOwner == _studentOwner) && (keccak256(bytes(listEducations[i].institution)) == keccak256(bytes(_institution))) && (keccak256(bytes(listEducations[i].focusArea)) == keccak256(bytes(_focusArea)))){
+                    return 1;
+                }
+            }
+    }
+
+    // Chức năng lấy thông tin học vấn của sinh viên
+    function getEducation(address _studentOwner) public view returns(
+        string[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory) {
+            string[] memory institutions = new string[](listEducations.length);
+            string[] memory focusAreas = new string[](listEducations.length);
+            string[] memory startTimes = new string[](listEducations.length);
+            string[] memory finishTimes = new string[](listEducations.length);
+            string[] memory gpas = new string[](listEducations.length);
+            for(uint i=0; i<listEducations.length;i++){
+                if(listEducations[i].studentOwner == _studentOwner) {
+                    institutions[i] = listEducations[i].institution;
+                    focusAreas[i] = listEducations[i].focusArea;
+                    startTimes[i] = listEducations[i].startTime;
+                    finishTimes[i] = listEducations[i].finishTime;
+                    gpas[i] = listEducations[i].gpa;
+                }
+            }
+            return (institutions, focusAreas, startTimes, finishTimes, gpas);
+    }
 }
