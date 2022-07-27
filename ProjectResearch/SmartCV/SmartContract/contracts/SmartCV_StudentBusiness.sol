@@ -24,19 +24,21 @@ contract StudentBusiness {
     function addStudentProfile (
         address _studentOwner,
         string memory _name,
-        string memory _birthDay,
+        string memory _phoneNumber,
         string memory _professionalTitle,
         string memory _email,
         string memory _github,
         string memory _linkedin,
+        string memory _sourceImage,
         string memory _password) public {
             listStudent.addSV(_studentOwner, 
                                 _name, 
-                                _birthDay, 
+                                _phoneNumber, 
                                 _professionalTitle, 
                                 _email, 
                                 _github, 
-                                _linkedin, 
+                                _linkedin,
+                                _sourceImage,
                                 _password);
     }
 
@@ -44,29 +46,32 @@ contract StudentBusiness {
     function editStudentProfile (
         address _studentOwner,
         string memory _name,
-        string memory _birthDay,
+        string memory _phoneNumber,
         string memory _professionalTitle,
         string memory _email,
         string memory _github,
-        string memory _linkedin) public {
-            listStudent.editSV(_studentOwner, 
+        string memory _linkedin,
+        string memory _sourceImage) public {
+            listStudent.editSV(_studentOwner,
                                 _name, 
-                                _birthDay, 
+                                _phoneNumber, 
                                 _professionalTitle, 
                                 _email, 
                                 _github, 
-                                _linkedin);
+                                _linkedin,
+                                _sourceImage);
     }
 
     // Chức năng lấy thông tin của sinh viên
     function getStudentProfile(address _studentOwner) public view returns(
         address studentOwner, 
         string memory name, 
-        string memory birthDay, 
+        string memory phoneNumber, 
         string memory professionalTitle, 
         string memory email, 
         string memory github, 
         string memory linkedin,
+        string memory sourceImage,
         string memory password) {
             return listStudent.getProfile(_studentOwner);
     }
@@ -111,8 +116,7 @@ contract StudentBusiness {
     }
 
     // Chức năng kiểm tra số lượng kĩ năng của sinh viên
-    function checkNumStudentSkill(
-        address _studentOwner) public view returns(uint x) {
+    function checkNumStudentSkill(address _studentOwner) public view returns(uint x) {
             uint _count = listStudent.checkNumSkill(_studentOwner);
             if(_count > 10){
                 return 1;
@@ -124,6 +128,58 @@ contract StudentBusiness {
         string[] memory titles,
         uint[] memory levels) {
         return listStudent.getSkill(_studentOwner);
+    }
+
+    // Chức năng thêm thông tin học vấn của sinh viên
+    function addStudentEducation(
+        address _studentOwner,
+        string memory _institution,
+        string memory _focusArea, 
+        string memory _startTime,
+        string memory _finishTime,
+        string memory _gpa) public {
+            listStudent.addEducation(_studentOwner, 
+                                    _institution, 
+                                    _focusArea,
+                                    _startTime,
+                                    _finishTime,
+                                    _gpa);
+    }
+
+    // Chức năng chỉnh sửa thông tin học vấn của sinh viên
+    function editStudentEducation(
+        address _studentOwner,
+        string memory _institution,
+        string memory _focusArea, 
+        string memory _startTime,
+        string memory _finishTime,
+        string memory _gpa) public {
+            listStudent.editEducation(_studentOwner, 
+                                    _institution, 
+                                    _focusArea,
+                                    _startTime,
+                                    _finishTime,
+                                    _gpa);
+    }
+
+    // Chức năng kiểm tra sinh viên đã thêm học vấn đó hay chưa?
+    function checkStudentEducation(
+        address _studentOwner, 
+        string memory _institution,
+        string memory _focusArea) public view returns(uint x) {
+            return listStudent.checkEducation(_studentOwner,
+                                            _institution,
+                                            _focusArea);
+    }
+
+    // Chức năng lấy thông tin học vấn của sinh viên
+    function getStudentEducation(address _studentOwner) public view returns(
+        string[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory) {
+            return listStudent.getEducation(_studentOwner);
     }
 
     // Chức năng lấy danh sách doanh nghiệp
@@ -141,8 +197,11 @@ contract StudentBusiness {
 
     // Chức năng lấy thông tin tuyển dụng của doanh nghiệp
     function getRecruit(address _businessOwner) public view returns(
+        bytes32[] memory,
         string[] memory,
-        string[] memory) {
+        string[] memory,
+        string[] memory,
+        uint[] memory) {
         return applyCV.getRecruit(_businessOwner);
     }
 
@@ -282,10 +341,26 @@ contract StudentBusiness {
     function addRecruit(
         address _businessOwner,
         string memory _jobTitle,
-        string memory _jobDescription) public {
+        string memory _jobDescription,
+        string memory _recruitDate,
+        uint _amount) public {
             applyCV.addRecruit(_businessOwner, 
                                 _jobTitle, 
-                                _jobDescription);
+                                _jobDescription,
+                                _recruitDate,
+                                _amount);
+    }
+
+    // Chức năng kiểm tra số lượng tuyển dụng đã đủ hay chưa?
+    function checkAmountBusinessRecruit(
+        address _businessOwner,
+        string memory _jobTitle,
+        string memory _recruitDate) public view returns(uint x) {
+            uint numCV = applyCV.checkNumCV(_businessOwner);
+            uint amountRecuit = applyCV.checkAmountRecruit(_businessOwner, _jobTitle, _recruitDate);
+            if(numCV > amountRecuit){
+                return 1;
+            }
     }
 
     // Chức năng đánh giá thực tập cho sinh viên
@@ -320,13 +395,29 @@ contract StudentBusiness {
                             _password);
     }
 
+    // Chức năng chỉnh sửa thông tin IIG
+    function editIIGProfile(
+        address _iigOwner,
+        string memory _name,
+        string memory _country,
+        string memory _facebook,
+        string memory _website,
+        string memory _linkedin) public {
+            listIIG.editIIG(_iigOwner, 
+                            _name, 
+                            _country, 
+                            _facebook, 
+                            _website, 
+                            _linkedin);
+    }
+
     // Chức năng lấy thông tin của IIG
     function getIIGProfile(address _iigOwner) public view returns(
-        address iigOwner, 
-        string memory name, 
-        string memory country, 
-        string memory facebook, 
-        string memory website, 
+        address iigOwner,
+        string memory name,
+        string memory country,
+        string memory facebook,
+        string memory website,
         string memory linkedin) {
             return listIIG.getProfile(_iigOwner);
     }
@@ -346,15 +437,18 @@ contract StudentBusiness {
     // Chức năng gửi thông tin yêu cầu chứng chỉ IIG
     function sendIIGRequest (
         address _studentOwner,
-        address _iigOwner) public {
+        address _iigOwner,
+        string memory _identityCard) public {
             listIIG.addRequest(_studentOwner, 
-                            _iigOwner);
+                            _iigOwner,
+                            _identityCard);
     }
 
     // Chức năng lấy danh sách yêu cầu chứng chỉ IIG
     function getListIIGRequest(address _iigOwner) public view returns(
         address[] memory, 
         address[] memory, 
+        string[] memory,
         string[] memory) {
             return listIIG.getListRequest(_iigOwner);
     }
