@@ -450,29 +450,54 @@ contract StudentBusiness {
     function sendIIGRequest (
         address _studentOwner,
         address _iigOwner,
-        string memory _identityCard) public {
+        string memory _identityCard,
+        string memory _requestDate) public {
             listIIG.addRequest(_studentOwner, 
                             _iigOwner,
-                            _identityCard);
+                            _identityCard,
+                            _requestDate);
     }
 
     // Chức năng lấy danh sách yêu cầu chứng chỉ IIG
     function getListIIGRequest(address _iigOwner) public view returns(
+        bytes32[] memory,
         address[] memory, 
         address[] memory, 
         string[] memory,
+        string[] memory,
         string[] memory) {
             return listIIG.getListRequest(_iigOwner);
+    }
+
+    // Chức năng lấy danh sách yêu cầu chứng chỉ IIG theo sinh viên
+    function getListIIGRequestStudent(address _iigOwner, address _studentOwner) public view returns(
+        bytes32[] memory,
+        address[] memory, 
+        address[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory) {
+            return listIIG.getListRequestStudent(_iigOwner, _studentOwner);
     }
 
     //Chức năng duyệt yêu cầu chứng chỉ IIG
     function confirmIIGRequest(
         address _studentOwner, 
         address _iigOwner, 
-        string memory _statusRequest) public {
+        bytes32 _codeRequest) public {
             listIIG.confirmRequest(_studentOwner,
                                     _iigOwner,
-                                    _statusRequest);
+                                    _codeRequest);
+    }
+
+    //Chức năng từ chối yêu cầu chứng chỉ IIG
+    function declineIIGRequest(
+        address _studentOwner, 
+        address _iigOwner, 
+        bytes32 _codeRequest) public {
+            listIIG.declineRequest(_studentOwner,
+                                    _iigOwner,
+                                    _codeRequest);
     }
 
     // Chức năng nhập thông tin điểm thi Listening - Reading
@@ -512,7 +537,7 @@ contract StudentBusiness {
     }
 
     //Chức năng lấy thông tin điểm thi Listening - Reading
-    function getIIGLRResult(address _iigOwner, address _studentOwner) public view returns(
+    function getListIIGLRResult(address _iigOwner, address _studentOwner) public view returns(
         string[] memory,
         string[] memory,
         string[] memory,
@@ -520,10 +545,10 @@ contract StudentBusiness {
         uint[] memory,
         uint[] memory) {
             return listIIG.getListLRResult(_iigOwner, _studentOwner);
-        }
+    }
 
     //Chức năng lấy thông tin điểm thi Speaking - Writing
-    function getIIGSWResult(address _iigOwner, address _studentOwner) public view returns(
+    function getListIIGSWResult(address _iigOwner, address _studentOwner) public view returns(
         string[] memory,
         string[] memory,
         string[] memory,
@@ -531,7 +556,43 @@ contract StudentBusiness {
         uint[] memory,
         uint[] memory) {
             return listIIG.getListSWResult(_iigOwner, _studentOwner);
-        }
+    }
+
+    // Chức năng lấy điểm thi Listening - Reading của sinh viên
+    function getIIGLRResult(
+        address _iigOwner, 
+        address _studentOwner,
+        string memory _testDate,
+        string memory _shiftTest) public view returns(
+            string memory testDate,
+            string memory shiftTest,
+            string memory expireDate,
+            uint listeningScore,
+            uint readingScore,
+            uint totalScore) {
+                return listIIG.getLRResult(_iigOwner,
+                                            _studentOwner,
+                                            _testDate,
+                                            _shiftTest);
+    }
+
+    // Chức năng lấy điểm thi Speaking - Writing của sinh viên
+    function getIIGSWResult(
+        address _iigOwner, 
+        address _studentOwner,
+        string memory _testDate,
+        string memory _shiftTest) public view returns(
+            string memory testDate,
+            string memory shiftTest,
+            string memory expireDate,
+            uint speakingScore,
+            uint writingScore,
+            uint totalScore) {
+                return listIIG.getSWResult(_iigOwner,
+                                            _studentOwner,
+                                            _testDate,
+                                            _shiftTest);
+    }
 
     // Chức năng kiểm tra kết quả ngày thi Listening - Reading của sinh viên đã tồn tại hay chưa?
     function checkExistIIGLRResult(

@@ -17,14 +17,17 @@ contract ListIIG {
 
     // Khai báo cấu trúc lưu trữ thông tin yêu cầu chứng chỉ IIG của sinh viên
     struct IIGRequest {
+        bytes32 codeRequest;
         address studentOwner;
         address iigOwner;
         string identityCard;
+        string requestDate;
         string statusRequest;
     }
 
     // Khai báo cấu trúc lưu trữ thông tin điểm thi Listening - Reading IIG
     struct IIGLRResult {
+        bytes32 codeLRResult;
         address iigOwner;
         address studentOwner;
         string testDate;
@@ -37,6 +40,7 @@ contract ListIIG {
 
     // Khai báo cấu trúc lưu trữ thông tin điểm thi Speaking - Writing IIG
     struct IIGSWResult {
+        bytes32 codeSWResult;
         address iigOwner;
         address studentOwner;
         string testDate;
@@ -164,44 +168,92 @@ contract ListIIG {
     function addRequest (
         address _studentOwner,
         address _iigOwner,
-        string memory _identityCard) public {
+        string memory _identityCard,
+        string memory _requestDate) public {
             iigRequests.push(
-                IIGRequest(_studentOwner, 
+                IIGRequest(keccak256(bytes(string(abi.encodePacked(_requestDate)))),
+                        _studentOwner, 
                         _iigOwner,
                         _identityCard,
+                        _requestDate,
                         "Waiting")
                 );
     }
 
     // Chức năng lấy danh sách yêu cầu chứng chỉ IIG
     function getListRequest(address _iigOwner) public view returns(
+        bytes32[] memory,
         address[] memory, 
         address[] memory,
         string[] memory,
+        string[] memory,
         string[] memory) {
+            bytes32[] memory codeRequests = new bytes32[](iigRequests.length);
             address[] memory studentOwners = new address[](iigRequests.length);
             address[] memory iigOwners = new address[](iigRequests.length);
             string[] memory identityCards = new string[](iigRequests.length);
+            string[] memory requestDates = new string[](iigRequests.length);
             string[] memory statusRequests = new string[](iigRequests.length);
             for(uint i=0; i<iigRequests.length;i++){
                 if(iigRequests[i].iigOwner == _iigOwner){
+                    codeRequests[i] = iigRequests[i].codeRequest;
                     studentOwners[i] = iigRequests[i].studentOwner;
                     iigOwners[i] = iigRequests[i].iigOwner;
                     identityCards[i] = iigRequests[i].identityCard;
+                    requestDates[i] = iigRequests[i].requestDate;
                     statusRequests[i] = iigRequests[i].statusRequest;
                 }
             }
-            return (studentOwners, iigOwners, identityCards, statusRequests);
+            return (codeRequests, studentOwners, iigOwners, identityCards, requestDates, statusRequests);
+    }
+
+    // Chức năng lấy danh sách yêu cầu chứng chỉ IIG theo sinh viên
+    function getListRequestStudent(address _iigOwner, address _studentOwner) public view returns(
+        bytes32[] memory,
+        address[] memory, 
+        address[] memory,
+        string[] memory,
+        string[] memory,
+        string[] memory) {
+            bytes32[] memory codeRequests = new bytes32[](iigRequests.length);
+            address[] memory studentOwners = new address[](iigRequests.length);
+            address[] memory iigOwners = new address[](iigRequests.length);
+            string[] memory identityCards = new string[](iigRequests.length);
+            string[] memory requestDates = new string[](iigRequests.length);
+            string[] memory statusRequests = new string[](iigRequests.length);
+            for(uint i=0; i<iigRequests.length;i++){
+                if((iigRequests[i].iigOwner == _iigOwner) && (iigRequests[i].studentOwner == _studentOwner)){
+                    codeRequests[i] = iigRequests[i].codeRequest;
+                    studentOwners[i] = iigRequests[i].studentOwner;
+                    iigOwners[i] = iigRequests[i].iigOwner;
+                    identityCards[i] = iigRequests[i].identityCard;
+                    requestDates[i] = iigRequests[i].requestDate;
+                    statusRequests[i] = iigRequests[i].statusRequest;
+                }
+            }
+            return (codeRequests, studentOwners, iigOwners, identityCards, requestDates, statusRequests);
     }
 
     //Chức năng duyệt yêu cầu chứng chỉ IIG
     function confirmRequest(
         address _studentOwner, 
-        address _iigOwner, 
-        string memory _statusRequest) public {
+        address _iigOwner,
+        bytes32  _codeRequest) public {
             for(uint i=0; i<iigRequests.length; i++){
-                if((iigRequests[i].studentOwner == _studentOwner) && (iigRequests[i].iigOwner == _iigOwner)){
-                    iigRequests[i].statusRequest = _statusRequest;
+                if((iigRequests[i].studentOwner == _studentOwner) && (iigRequests[i].iigOwner == _iigOwner) && (iigRequests[i].codeRequest == _codeRequest)){
+                    iigRequests[i].statusRequest = "Accept";
+                }
+            }
+    }
+
+    //Chức năng từ chối yêu cầu chứng chỉ IIG
+    function declineRequest(
+        address _studentOwner, 
+        address _iigOwner,
+        bytes32  _codeRequest) public {
+            for(uint i=0; i<iigRequests.length; i++){
+                if((iigRequests[i].studentOwner == _studentOwner) && (iigRequests[i].iigOwner == _iigOwner) && (iigRequests[i].codeRequest == _codeRequest)){
+                    iigRequests[i].statusRequest = "Decline";
                 }
             }
     }
@@ -218,7 +270,8 @@ contract ListIIG {
             require(_listeningScore >=0 && _listeningScore <=495, "Listening Score incorrect.");
             require(_readingScore >=0 && _readingScore <=495, "Reading Score incorrect.");
             iigLRResults.push(
-                IIGLRResult(_iigOwner, 
+                IIGLRResult(keccak256(bytes(string(abi.encodePacked(_testDate, _shiftTest)))),
+                        _iigOwner, 
                         _studentOwner, 
                         _testDate,
                         _shiftTest,
@@ -230,30 +283,56 @@ contract ListIIG {
     }
 
     // Chức năng lấy danh sách điểm thi Listening - Reading đã thêm
-    function getListLRResult(address _iigOwner, address _studentOwner) public view returns(
-        string[] memory,
-        string[] memory,
-        string[] memory,
-        uint[] memory,
-        uint[] memory,
-        uint[] memory) {
-            string[] memory testDates = new string[](iigLRResults.length);
-            string[] memory shiftTests = new string[](iigLRResults.length);
-            string[] memory expireDates = new string[](iigLRResults.length);
-            uint[] memory listeningScores = new uint[](iigLRResults.length);
-            uint[] memory readingScores = new uint[](iigLRResults.length);
-            uint[] memory totalScores = new uint[](iigLRResults.length);
-            for(uint i=0; i<iigLRResults.length;i++){
-                if((iigLRResults[i].iigOwner == _iigOwner) && (iigLRResults[i].studentOwner == _studentOwner)){
-                    testDates[i] = iigLRResults[i].testDate;
-                    shiftTests[i] = iigLRResults[i].shiftTest;
-                    expireDates[i] = iigLRResults[i].expireDate;
-                    listeningScores[i] = iigLRResults[i].listeningScore;
-                    readingScores[i] = iigLRResults[i].readingScore;
-                    totalScores[i] = iigLRResults[i].totalScore;
+    function getListLRResult(
+        address _iigOwner, 
+        address _studentOwner) public view returns(
+            string[] memory,
+            string[] memory,
+            string[] memory,
+            uint[] memory,
+            uint[] memory,
+            uint[] memory) {
+                string[] memory testDates = new string[](iigLRResults.length);
+                string[] memory shiftTests = new string[](iigLRResults.length);
+                string[] memory expireDates = new string[](iigLRResults.length);
+                uint[] memory listeningScores = new uint[](iigLRResults.length);
+                uint[] memory readingScores = new uint[](iigLRResults.length);
+                uint[] memory totalScores = new uint[](iigLRResults.length);
+                for(uint i=0; i<iigLRResults.length;i++){
+                    if((iigLRResults[i].iigOwner == _iigOwner) && (iigLRResults[i].studentOwner == _studentOwner)){
+                        testDates[i] = iigLRResults[i].testDate;
+                        shiftTests[i] = iigLRResults[i].shiftTest;
+                        expireDates[i] = iigLRResults[i].expireDate;
+                        listeningScores[i] = iigLRResults[i].listeningScore;
+                        readingScores[i] = iigLRResults[i].readingScore;
+                        totalScores[i] = iigLRResults[i].totalScore;
+                    }
                 }
-            }
-            return (testDates, shiftTests, expireDates, listeningScores, readingScores, totalScores);
+                return (testDates, shiftTests, expireDates, listeningScores, readingScores, totalScores);
+    }
+
+    // Chức năng lấy điểm thi Listening - Reading của sinh viên
+    function getLRResult(
+        address _iigOwner, 
+        address _studentOwner,
+        string memory _testDate,
+        string memory _shiftTest) public view returns(
+            string memory testDate,
+            string memory shiftTest,
+            string memory expireDate,
+            uint listeningScore,
+            uint readingScore,
+            uint totalScore) {
+                for(uint i=0; i<iigLRResults.length;i++){
+                    if((iigLRResults[i].iigOwner == _iigOwner) && (iigLRResults[i].studentOwner == _studentOwner) && (iigLRResults[i].codeLRResult == keccak256(bytes(string(abi.encodePacked(_testDate, _shiftTest)))))){
+                        return(iigLRResults[i].testDate,
+                                iigLRResults[i].shiftTest,
+                                iigLRResults[i].expireDate,
+                                iigLRResults[i].listeningScore,
+                                iigLRResults[i].readingScore,
+                                iigLRResults[i].totalScore);
+                    }
+                }
     }
 
     // Chức năng kiểm tra kết quả ngày thi Listening - Reading của sinh viên đã tồn tại hay chưa?
@@ -262,7 +341,7 @@ contract ListIIG {
         string memory _testDate,
         string memory _shiftTest) public view returns(uint x) {
             for(uint i=0; i<iigLRResults.length; i++){
-                if((iigLRResults[i].studentOwner == _studentOwner) && (keccak256(bytes(iigLRResults[i].testDate)) == keccak256(bytes(_testDate))) && (keccak256(bytes(iigLRResults[i].shiftTest)) == keccak256(bytes(_shiftTest)))){
+                if((iigLRResults[i].studentOwner == _studentOwner) && (iigLRResults[i].codeLRResult == keccak256(bytes(string(abi.encodePacked(_testDate, _shiftTest)))))){
                     return 1;
                 }
             }
@@ -280,7 +359,8 @@ contract ListIIG {
             require(_speakingScore >=0 && _speakingScore <=200, "Speaking Score incorrect.");
             require(_writingScore >=0 && _writingScore <=200, "Writing Score incorrect.");
             iigSWResults.push(
-                IIGSWResult(_iigOwner, 
+                IIGSWResult(keccak256(bytes(string(abi.encodePacked(_testDate, _shiftTest)))),
+                        _iigOwner, 
                         _studentOwner, 
                         _testDate,
                         _shiftTest,
@@ -317,6 +397,30 @@ contract ListIIG {
             }
             return (testDates, shiftTests, expireDates, speakingScores, writingScores, totalScores);
     }
+
+    // Chức năng lấy điểm thi Speaking - Writing của sinh viên
+    function getSWResult(
+        address _iigOwner, 
+        address _studentOwner,
+        string memory _testDate,
+        string memory _shiftTest) public view returns(
+            string memory testDate,
+            string memory shiftTest,
+            string memory expireDate,
+            uint speakingScore,
+            uint writingScore,
+            uint totalScore) {
+                for(uint i=0; i<iigSWResults.length;i++){
+                    if((iigSWResults[i].iigOwner == _iigOwner) && (iigSWResults[i].studentOwner == _studentOwner) && (iigSWResults[i].codeSWResult == keccak256(bytes(string(abi.encodePacked(_testDate, _shiftTest)))))){
+                        return(iigSWResults[i].testDate,
+                                iigSWResults[i].shiftTest,
+                                iigSWResults[i].expireDate,
+                                iigSWResults[i].speakingScore,
+                                iigSWResults[i].writingScore,
+                                iigSWResults[i].totalScore);
+                    }
+                }
+    }
     
     // Chức năng kiểm tra kết quả ngày thi Speaking - Writing của sinh viên đã tồn tại hay chưa?
     function checkExistSWResult(
@@ -324,7 +428,7 @@ contract ListIIG {
         string memory _testDate,
         string memory _shiftTest) public view returns(uint x) {
             for(uint i=0; i<iigSWResults.length; i++){
-                if((iigLRResults[i].studentOwner == _studentOwner) && (keccak256(bytes(iigLRResults[i].testDate)) == keccak256(bytes(_testDate))) && (keccak256(bytes(iigLRResults[i].shiftTest)) == keccak256(bytes(_shiftTest)))){
+                if((iigLRResults[i].studentOwner == _studentOwner) && (iigLRResults[i].codeLRResult == keccak256(bytes(string(abi.encodePacked(_testDate, _shiftTest)))))){
                     return 1;
                 }
             }
