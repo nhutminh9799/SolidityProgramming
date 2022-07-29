@@ -460,7 +460,7 @@ contract StudentBusiness {
 
     // Chức năng lấy danh sách yêu cầu chứng chỉ IIG
     function getListIIGRequest(address _iigOwner) public view returns(
-        bytes32[] memory,
+        bytes4[] memory,
         address[] memory, 
         address[] memory, 
         string[] memory,
@@ -471,7 +471,7 @@ contract StudentBusiness {
 
     // Chức năng lấy danh sách yêu cầu chứng chỉ IIG theo sinh viên
     function getListIIGRequestStudent(address _iigOwner, address _studentOwner) public view returns(
-        bytes32[] memory,
+        bytes4[] memory,
         address[] memory, 
         address[] memory,
         string[] memory,
@@ -484,20 +484,12 @@ contract StudentBusiness {
     function confirmIIGRequest(
         address _studentOwner, 
         address _iigOwner, 
-        bytes32 _codeRequest) public {
+        bytes4 _codeRequest,
+        string memory _statusRequest) public {
             listIIG.confirmRequest(_studentOwner,
                                     _iigOwner,
-                                    _codeRequest);
-    }
-
-    //Chức năng từ chối yêu cầu chứng chỉ IIG
-    function declineIIGRequest(
-        address _studentOwner, 
-        address _iigOwner, 
-        bytes32 _codeRequest) public {
-            listIIG.declineRequest(_studentOwner,
-                                    _iigOwner,
-                                    _codeRequest);
+                                    _codeRequest,
+                                    _statusRequest);
     }
 
     // Chức năng nhập thông tin điểm thi Listening - Reading

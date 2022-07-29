@@ -17,7 +17,7 @@ contract ListIIG {
 
     // Khai báo cấu trúc lưu trữ thông tin yêu cầu chứng chỉ IIG của sinh viên
     struct IIGRequest {
-        bytes32 codeRequest;
+        bytes4 codeRequest;
         address studentOwner;
         address iigOwner;
         string identityCard;
@@ -27,7 +27,7 @@ contract ListIIG {
 
     // Khai báo cấu trúc lưu trữ thông tin điểm thi Listening - Reading IIG
     struct IIGLRResult {
-        bytes32 codeLRResult;
+        bytes4 codeLRResult;
         address iigOwner;
         address studentOwner;
         string testDate;
@@ -40,7 +40,7 @@ contract ListIIG {
 
     // Khai báo cấu trúc lưu trữ thông tin điểm thi Speaking - Writing IIG
     struct IIGSWResult {
-        bytes32 codeSWResult;
+        bytes4 codeSWResult;
         address iigOwner;
         address studentOwner;
         string testDate;
@@ -171,7 +171,7 @@ contract ListIIG {
         string memory _identityCard,
         string memory _requestDate) public {
             iigRequests.push(
-                IIGRequest(keccak256(bytes(string(abi.encodePacked(_requestDate)))),
+                IIGRequest(bytes4(keccak256(abi.encodePacked(_requestDate))),
                         _studentOwner, 
                         _iigOwner,
                         _identityCard,
@@ -182,13 +182,13 @@ contract ListIIG {
 
     // Chức năng lấy danh sách yêu cầu chứng chỉ IIG
     function getListRequest(address _iigOwner) public view returns(
-        bytes32[] memory,
+        bytes4[] memory,
         address[] memory, 
         address[] memory,
         string[] memory,
         string[] memory,
         string[] memory) {
-            bytes32[] memory codeRequests = new bytes32[](iigRequests.length);
+            bytes4[] memory codeRequests = new bytes4[](iigRequests.length);
             address[] memory studentOwners = new address[](iigRequests.length);
             address[] memory iigOwners = new address[](iigRequests.length);
             string[] memory identityCards = new string[](iigRequests.length);
@@ -209,13 +209,13 @@ contract ListIIG {
 
     // Chức năng lấy danh sách yêu cầu chứng chỉ IIG theo sinh viên
     function getListRequestStudent(address _iigOwner, address _studentOwner) public view returns(
-        bytes32[] memory,
+        bytes4[] memory,
         address[] memory, 
         address[] memory,
         string[] memory,
         string[] memory,
         string[] memory) {
-            bytes32[] memory codeRequests = new bytes32[](iigRequests.length);
+            bytes4[] memory codeRequests = new bytes4[](iigRequests.length);
             address[] memory studentOwners = new address[](iigRequests.length);
             address[] memory iigOwners = new address[](iigRequests.length);
             string[] memory identityCards = new string[](iigRequests.length);
@@ -238,22 +238,12 @@ contract ListIIG {
     function confirmRequest(
         address _studentOwner, 
         address _iigOwner,
-        bytes32  _codeRequest) public {
+        bytes4 _codeRequest,
+        string memory _statusRequest) public {
+            require(keccak256(bytes(_statusRequest)) == keccak256(bytes("Accepted")) || keccak256(bytes(_statusRequest)) == keccak256(bytes("Declined")), "Status Request incorrect.");
             for(uint i=0; i<iigRequests.length; i++){
                 if((iigRequests[i].studentOwner == _studentOwner) && (iigRequests[i].iigOwner == _iigOwner) && (iigRequests[i].codeRequest == _codeRequest)){
-                    iigRequests[i].statusRequest = "Accept";
-                }
-            }
-    }
-
-    //Chức năng từ chối yêu cầu chứng chỉ IIG
-    function declineRequest(
-        address _studentOwner, 
-        address _iigOwner,
-        bytes32  _codeRequest) public {
-            for(uint i=0; i<iigRequests.length; i++){
-                if((iigRequests[i].studentOwner == _studentOwner) && (iigRequests[i].iigOwner == _iigOwner) && (iigRequests[i].codeRequest == _codeRequest)){
-                    iigRequests[i].statusRequest = "Decline";
+                    iigRequests[i].statusRequest = _statusRequest;
                 }
             }
     }
@@ -270,7 +260,7 @@ contract ListIIG {
             require(_listeningScore >=0 && _listeningScore <=495, "Listening Score incorrect.");
             require(_readingScore >=0 && _readingScore <=495, "Reading Score incorrect.");
             iigLRResults.push(
-                IIGLRResult(keccak256(bytes(string(abi.encodePacked(_testDate, _shiftTest)))),
+                IIGLRResult(bytes4(keccak256(abi.encodePacked(_testDate, _shiftTest))),
                         _iigOwner, 
                         _studentOwner, 
                         _testDate,
@@ -359,7 +349,7 @@ contract ListIIG {
             require(_speakingScore >=0 && _speakingScore <=200, "Speaking Score incorrect.");
             require(_writingScore >=0 && _writingScore <=200, "Writing Score incorrect.");
             iigSWResults.push(
-                IIGSWResult(keccak256(bytes(string(abi.encodePacked(_testDate, _shiftTest)))),
+                IIGSWResult(bytes4(keccak256(abi.encodePacked(_testDate, _shiftTest))),
                         _iigOwner, 
                         _studentOwner, 
                         _testDate,
