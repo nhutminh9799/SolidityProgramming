@@ -585,24 +585,4 @@ contract StudentBusiness {
                                             _testDate,
                                             _shiftTest);
     }
-
-    // Chức năng kiểm tra kết quả ngày thi Listening - Reading của sinh viên đã tồn tại hay chưa?
-    function checkExistIIGLRResult(
-        address _studentOwner,
-        string memory _testDate,
-        string memory _shiftTest) public view returns(uint x) {
-            return listIIG.checkExistLRResult(_studentOwner, 
-                                            _testDate, 
-                                            _shiftTest);
-    }
-
-    // Chức năng kiểm tra kết quả ngày thi Speaking - Writing của sinh viên đã tồn tại hay chưa?
-    function checkExistIIGSWResult(
-        address _studentOwner,
-        string memory _testDate,
-        string memory _shiftTest) public view returns(uint x) {
-            return listIIG.checkExistSWResult(_studentOwner, 
-                                            _testDate, 
-                                            _shiftTest);
-    }
 }

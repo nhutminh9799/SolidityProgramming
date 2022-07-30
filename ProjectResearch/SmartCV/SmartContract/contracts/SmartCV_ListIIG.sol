@@ -170,6 +170,7 @@ contract ListIIG {
         address _iigOwner,
         string memory _identityCard,
         string memory _requestDate) public {
+            require(checkRequest(_studentOwner, _iigOwner) == 0, "Waiting for confirmation.");
             iigRequests.push(
                 IIGRequest(bytes4(keccak256(abi.encodePacked(_requestDate))),
                         _studentOwner, 
@@ -234,6 +235,17 @@ contract ListIIG {
             return (codeRequests, studentOwners, iigOwners, identityCards, requestDates, statusRequests);
     }
 
+    //Chức năng kiểm tra yêu cầu chứng chỉ IIG
+    function checkRequest(
+        address _studentOwner, 
+        address _iigOwner) public view returns(uint x) {
+            for(uint i=0; i<iigRequests.length; i++){
+                if((iigRequests[i].studentOwner == _studentOwner) && (iigRequests[i].iigOwner == _iigOwner) && (keccak256(bytes(iigRequests[i].statusRequest)) == keccak256(bytes("Waiting")))){
+                    return 1;
+                }
+            }
+    }
+
     //Chức năng duyệt yêu cầu chứng chỉ IIG
     function confirmRequest(
         address _studentOwner, 
@@ -257,6 +269,7 @@ contract ListIIG {
         string memory _expireDate,
         uint _listeningScore,
         uint _readingScore) public {
+            require(checkExistLRResult(_studentOwner, _testDate, _shiftTest) == 0, "Duplicate LR Result.");
             require(_listeningScore >=0 && _listeningScore <=495, "Listening Score incorrect.");
             require(_readingScore >=0 && _readingScore <=495, "Reading Score incorrect.");
             iigLRResults.push(
@@ -346,6 +359,7 @@ contract ListIIG {
         string memory _expireDate,
         uint _speakingScore,
         uint _writingScore) public {
+            require(checkExistLRResult(_studentOwner, _testDate, _shiftTest) == 0, "Duplicate SW Result.");
             require(_speakingScore >=0 && _speakingScore <=200, "Speaking Score incorrect.");
             require(_writingScore >=0 && _writingScore <=200, "Writing Score incorrect.");
             iigSWResults.push(
