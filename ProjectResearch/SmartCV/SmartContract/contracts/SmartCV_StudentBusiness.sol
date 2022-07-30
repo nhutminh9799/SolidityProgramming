@@ -496,7 +496,7 @@ contract StudentBusiness {
     function addIIGLRResult (
         address _studentOwner,
         string memory _testDate,
-        string memory _shiftTest,
+        uint _shiftTest,
         string memory _expireDate,
         uint _listeningScore,
         uint _readingScore) public {
@@ -512,7 +512,7 @@ contract StudentBusiness {
     function addIIGSWResult (
         address _studentOwner,
         string memory _testDate,
-        string memory _shiftTest,
+        uint _shiftTest,
         string memory _expireDate,
         uint _speakingScore,
         uint _writingScore) public {
@@ -527,7 +527,7 @@ contract StudentBusiness {
     //Chức năng lấy thông tin điểm thi Listening - Reading
     function getListIIGLRResult(address _iigOwner, address _studentOwner) public view returns(
         string[] memory,
-        string[] memory,
+        uint[] memory,
         string[] memory,
         uint[] memory,
         uint[] memory,
@@ -538,7 +538,7 @@ contract StudentBusiness {
     //Chức năng lấy thông tin điểm thi Speaking - Writing
     function getListIIGSWResult(address _iigOwner, address _studentOwner) public view returns(
         string[] memory,
-        string[] memory,
+        uint[] memory,
         string[] memory,
         uint[] memory,
         uint[] memory,
@@ -551,9 +551,9 @@ contract StudentBusiness {
         address _iigOwner, 
         address _studentOwner,
         string memory _testDate,
-        string memory _shiftTest) public view returns(
+        uint _shiftTest) public view returns(
             string memory testDate,
-            string memory shiftTest,
+            uint shiftTest,
             string memory expireDate,
             uint listeningScore,
             uint readingScore,
@@ -569,9 +569,9 @@ contract StudentBusiness {
         address _iigOwner, 
         address _studentOwner,
         string memory _testDate,
-        string memory _shiftTest) public view returns(
+        uint _shiftTest) public view returns(
             string memory testDate,
-            string memory shiftTest,
+            uint shiftTest,
             string memory expireDate,
             uint speakingScore,
             uint writingScore,

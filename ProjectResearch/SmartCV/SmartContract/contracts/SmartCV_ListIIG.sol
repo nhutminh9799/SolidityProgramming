@@ -31,7 +31,7 @@ contract ListIIG {
         address iigOwner;
         address studentOwner;
         string testDate;
-        string shiftTest;
+        uint shiftTest;
         string expireDate;
         uint listeningScore;
         uint readingScore;
@@ -44,7 +44,7 @@ contract ListIIG {
         address iigOwner;
         address studentOwner;
         string testDate;
-        string shiftTest;
+        uint shiftTest;
         string expireDate;
         uint speakingScore;
         uint writingScore;
@@ -264,13 +264,14 @@ contract ListIIG {
     function addLRResult (
         address _studentOwner,
         string memory _testDate,
-        string memory _shiftTest,
+        uint _shiftTest,
         string memory _expireDate,
         uint _listeningScore,
         uint _readingScore) public {
             address _iigOwner = msg.sender;
             require(checkExistIIG(_iigOwner) == 1, "Not found owner.");
             require(checkExistLRResult(_studentOwner, _testDate, _shiftTest) == 0, "Duplicate LR Result.");
+            require(_shiftTest == 1 || _shiftTest == 2 || _shiftTest == 3 || _shiftTest == 4, "Shift Test incorrect.");
             require(_listeningScore >=0 && _listeningScore <=495, "Listening Score incorrect.");
             require(_readingScore >=0 && _readingScore <=495, "Reading Score incorrect.");
             iigLRResults.push(
@@ -291,13 +292,13 @@ contract ListIIG {
         address _iigOwner, 
         address _studentOwner) public view returns(
             string[] memory,
-            string[] memory,
+            uint[] memory,
             string[] memory,
             uint[] memory,
             uint[] memory,
             uint[] memory) {
                 string[] memory testDates = new string[](iigLRResults.length);
-                string[] memory shiftTests = new string[](iigLRResults.length);
+                uint[] memory shiftTests = new uint[](iigLRResults.length);
                 string[] memory expireDates = new string[](iigLRResults.length);
                 uint[] memory listeningScores = new uint[](iigLRResults.length);
                 uint[] memory readingScores = new uint[](iigLRResults.length);
@@ -320,9 +321,9 @@ contract ListIIG {
         address _iigOwner, 
         address _studentOwner,
         string memory _testDate,
-        string memory _shiftTest) public view returns(
+        uint _shiftTest) public view returns(
             string memory testDate,
-            string memory shiftTest,
+            uint shiftTest,
             string memory expireDate,
             uint listeningScore,
             uint readingScore,
@@ -343,7 +344,7 @@ contract ListIIG {
     function checkExistLRResult(
         address _studentOwner, 
         string memory _testDate,
-        string memory _shiftTest) public view returns(uint x) {
+        uint _shiftTest) public view returns(uint x) {
             for(uint i=0; i<iigLRResults.length; i++){
                 if((iigLRResults[i].studentOwner == _studentOwner) && (iigLRResults[i].codeLRResult == keccak256(bytes(string(abi.encodePacked(_testDate, _shiftTest)))))){
                     return 1;
@@ -355,13 +356,14 @@ contract ListIIG {
     function addSWResult (
         address _studentOwner,
         string memory _testDate,
-        string memory _shiftTest,
+        uint _shiftTest,
         string memory _expireDate,
         uint _speakingScore,
         uint _writingScore) public {
             address _iigOwner = msg.sender;
             require(checkExistIIG(_iigOwner) == 1, "Not found owner.");
-            require(checkExistLRResult(_studentOwner, _testDate, _shiftTest) == 0, "Duplicate SW Result.");
+            require(checkExistSWResult(_studentOwner, _testDate, _shiftTest) == 0, "Duplicate SW Result.");
+            require(_shiftTest == 1 || _shiftTest == 2 || _shiftTest == 3 || _shiftTest == 4, "Shift Test incorrect.");
             require(_speakingScore >=0 && _speakingScore <=200, "Speaking Score incorrect.");
             require(_writingScore >=0 && _writingScore <=200, "Writing Score incorrect.");
             iigSWResults.push(
@@ -380,13 +382,13 @@ contract ListIIG {
     // Chức năng lấy danh sách điểm thi Speaking - Writing đã thêm
     function getListSWResult(address _iigOwner, address _studentOwner) public view returns(
         string[] memory,
-        string[] memory,
+        uint[] memory,
         string[] memory,
         uint[] memory,
         uint[] memory,
         uint[] memory) {
             string[] memory testDates = new string[](iigSWResults.length);
-            string[] memory shiftTests = new string[](iigSWResults.length);
+            uint[] memory shiftTests = new uint[](iigSWResults.length);
             string[] memory expireDates = new string[](iigSWResults.length);
             uint[] memory speakingScores = new uint[](iigSWResults.length);
             uint[] memory writingScores = new uint[](iigSWResults.length);
@@ -409,9 +411,9 @@ contract ListIIG {
         address _iigOwner, 
         address _studentOwner,
         string memory _testDate,
-        string memory _shiftTest) public view returns(
+        uint _shiftTest) public view returns(
             string memory testDate,
-            string memory shiftTest,
+            uint shiftTest,
             string memory expireDate,
             uint speakingScore,
             uint writingScore,
@@ -432,7 +434,7 @@ contract ListIIG {
     function checkExistSWResult(
         address _studentOwner,
         string memory _testDate,
-        string memory _shiftTest) public view returns(uint x) {
+        uint _shiftTest) public view returns(uint x) {
             for(uint i=0; i<iigSWResults.length; i++){
                 if((iigLRResults[i].studentOwner == _studentOwner) && (iigLRResults[i].codeLRResult == keccak256(bytes(string(abi.encodePacked(_testDate, _shiftTest)))))){
                     return 1;
