@@ -494,15 +494,13 @@ contract StudentBusiness {
 
     // Chức năng nhập thông tin điểm thi Listening - Reading
     function addIIGLRResult (
-        address _iigOwner,
         address _studentOwner,
         string memory _testDate,
         string memory _shiftTest,
         string memory _expireDate,
         uint _listeningScore,
         uint _readingScore) public {
-            listIIG.addLRResult(_iigOwner, 
-                                _studentOwner, 
+            listIIG.addLRResult(_studentOwner, 
                                 _testDate,
                                 _shiftTest, 
                                 _expireDate, 
@@ -512,15 +510,13 @@ contract StudentBusiness {
 
     // Chức năng nhập thông tin điểm thi Speaking - Writing
     function addIIGSWResult (
-        address _iigOwner,
         address _studentOwner,
         string memory _testDate,
         string memory _shiftTest,
         string memory _expireDate,
         uint _speakingScore,
         uint _writingScore) public {
-            listIIG.addSWResult(_iigOwner, 
-                                _studentOwner, 
+            listIIG.addSWResult(_studentOwner, 
                                 _testDate,
                                 _shiftTest,
                                 _expireDate, 

@@ -262,13 +262,14 @@ contract ListIIG {
 
     // Chức năng thêm thông tin điểm thi Listening - Reading (Kiểm tra có nhập nhiều lần thi của 1 sinh viên chung 1 ngày không?)
     function addLRResult (
-        address _iigOwner,
         address _studentOwner,
         string memory _testDate,
         string memory _shiftTest,
         string memory _expireDate,
         uint _listeningScore,
         uint _readingScore) public {
+            address _iigOwner = msg.sender;
+            require(checkExistIIG(_iigOwner) == 1, "Not found owner.");
             require(checkExistLRResult(_studentOwner, _testDate, _shiftTest) == 0, "Duplicate LR Result.");
             require(_listeningScore >=0 && _listeningScore <=495, "Listening Score incorrect.");
             require(_readingScore >=0 && _readingScore <=495, "Reading Score incorrect.");
@@ -352,13 +353,14 @@ contract ListIIG {
 
     // Chức năng thêm thông tin điểm thi Speaking - Writing
     function addSWResult (
-        address _iigOwner,
         address _studentOwner,
         string memory _testDate,
         string memory _shiftTest,
         string memory _expireDate,
         uint _speakingScore,
         uint _writingScore) public {
+            address _iigOwner = msg.sender;
+            require(checkExistIIG(_iigOwner) == 1, "Not found owner.");
             require(checkExistLRResult(_studentOwner, _testDate, _shiftTest) == 0, "Duplicate SW Result.");
             require(_speakingScore >=0 && _speakingScore <=200, "Speaking Score incorrect.");
             require(_writingScore >=0 && _writingScore <=200, "Writing Score incorrect.");
