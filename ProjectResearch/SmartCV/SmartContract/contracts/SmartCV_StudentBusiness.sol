@@ -500,7 +500,9 @@ contract StudentBusiness {
         string memory _expireDate,
         uint _listeningScore,
         uint _readingScore) public {
-            listIIG.addLRResult(_studentOwner, 
+            address _iigOwner = msg.sender;
+            listIIG.addLRResult(_iigOwner,
+                                _studentOwner, 
                                 _testDate,
                                 _shiftTest, 
                                 _expireDate, 
@@ -516,7 +518,9 @@ contract StudentBusiness {
         string memory _expireDate,
         uint _speakingScore,
         uint _writingScore) public {
-            listIIG.addSWResult(_studentOwner, 
+            address _iigOwner = msg.sender;
+            listIIG.addSWResult(_iigOwner,
+                                _studentOwner, 
                                 _testDate,
                                 _shiftTest,
                                 _expireDate, 
