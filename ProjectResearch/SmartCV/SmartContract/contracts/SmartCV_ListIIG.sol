@@ -272,8 +272,8 @@ contract ListIIG {
             require(checkExistIIG(_iigOwner) == 1, "Not found owner.");
             require(checkExistLRResult(_studentOwner, _testDate, _shiftTest) == 0, "Duplicate LR Result.");
             require(_shiftTest == 1 || _shiftTest == 2 || _shiftTest == 3 || _shiftTest == 4, "Shift Test incorrect.");
-            require(_listeningScore >=0 && _listeningScore <=495, "Listening Score incorrect.");
-            require(_readingScore >=0 && _readingScore <=495, "Reading Score incorrect.");
+            require((_listeningScore >=0 && _listeningScore <=495) && (_listeningScore % 5 == 0), "Listening Score incorrect.");
+            require((_readingScore >=0 && _readingScore <=495) && (_listeningScore % 5 == 0), "Reading Score incorrect.");
             iigLRResults.push(
                 IIGLRResult(bytes4(keccak256(abi.encodePacked(_testDate, _shiftTest))),
                         _iigOwner, 
