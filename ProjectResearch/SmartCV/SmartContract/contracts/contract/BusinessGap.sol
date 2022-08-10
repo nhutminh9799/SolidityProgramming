@@ -7,8 +7,9 @@ interface IBusinessGap is IBusiness {}
 
 contract BusinessGap is IBusinessGap {
     uint256 private catergory = 0;
+    uint256 private id;
+    address private user;
 
-    // address private user;
     // string private name;
     // string private phone;
     // string private professional;
@@ -19,62 +20,72 @@ contract BusinessGap is IBusinessGap {
     // string private password;
 
     // setter
-    function setUser(address value) public {}
+    function setId(uint256 value) public override {
+        id = value;
+    }
 
-    function setName(string memory value) public {}
+    function setUser(address value) public override {
+        user = value;
+    }
 
-    function setPhone(string memory value) public {}
+    function setName(string memory value) public override {}
 
-    function setProfessional(string memory value) public {}
+    function setPhone(string memory value) public override {}
 
-    function setEmail(string memory value) public {}
+    function setProfessional(string memory value) public override {}
 
-    function setGithub(string memory value) public {}
+    function setEmail(string memory value) public override {}
 
-    function setLinkedin(string memory value) public {}
+    function setGithub(string memory value) public override {}
 
-    function setSourceImage(string memory value) public {}
+    function setLinkedin(string memory value) public override {}
 
-    function setPassword(string memory value) public {}
+    function setSourceImage(string memory value) public override {}
+
+    function setPassword(string memory value) public override {}
 
     //getter
-    function getCategory() public pure returns (uint256) {
+    function getCategory() public pure override returns (uint256) {
         return 0;
     }
 
-    function getUser() public pure returns (address) {
+    function getId() public view override returns (uint256) {
+        return id;
+    }
+
+    function getUser() public pure override returns (address) {
         return address(0);
     }
 
-    function getName() public pure returns (string memory) {
+    function getName() public pure override returns (string memory) {
         return "";
     }
 
-    function getPhone() public pure returns (string memory) {
+    function getPhone() public pure override returns (string memory) {
         return "";
     }
 
-    function getProfessional() public pure returns (string memory) {
+    function getProfessional() public pure override returns (string memory) {
         return "";
     }
 
-    function getEmail() public pure returns (string memory) {
+    function getEmail() public pure override returns (string memory) {
         return "";
     }
 
-    function getGithub() public pure returns (string memory) {
+    function getGithub() public pure override returns (string memory) {
         return "";
     }
 
-    function getLinkedin() public pure returns (string memory) {
+    function getLinkedin() public pure override returns (string memory) {
         return "";
     }
 
-    function getSourceImage() public pure returns (string memory) {
+    function getSourceImage() public pure override returns (string memory) {
         return "";
     }
 
-    function getPassword() public pure returns (string memory) {
+    function getPassword() public pure override returns (string memory) {
         return "";
     }
 }

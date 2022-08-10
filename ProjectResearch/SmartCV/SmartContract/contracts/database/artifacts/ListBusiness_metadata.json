@@ -1,0 +1,225 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "contract IBusiness",
+						"name": "item",
+						"type": "address"
+					}
+				],
+				"name": "Add",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "contract IBusiness",
+						"name": "item",
+						"type": "address"
+					}
+				],
+				"name": "Remove",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IBusiness",
+						"name": "item",
+						"type": "address"
+					}
+				],
+				"name": "add",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "at",
+				"outputs": [
+					{
+						"internalType": "contract IBusiness",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "destroy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "hide",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ProjectResearch/SmartCV/SmartContract/contracts/database/ListBusiness.sol": "ListBusiness"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ProjectResearch/SmartCV/SmartContract/contracts/abstract/Ownable.sol": {
+			"keccak256": "0xc3f00008eb3ab0a76e2424e6cc36db40e8ed92833168d362343299080a2b3389",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7d6426a6a5d8b1d05e26466aa8e8674d0be77f9231fb1e8eefa150ff0f9a28f7",
+				"dweb:/ipfs/QmQyhPXqthkqk3N56X448vqUkyMmU4r8nGLq1hdxem5Cui"
+			]
+		},
+		"ProjectResearch/SmartCV/SmartContract/contracts/contract/BusinessGap.sol": {
+			"keccak256": "0x67fb7d8b5c29bb13b1e38270891a966ee9ec6e5ef498d1dbbf73361ac9c7cce0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fd1b839b16663046d4decd1fbf8a697a25b18664dbfa6523d4d967aec6192712",
+				"dweb:/ipfs/Qmb5sYhot7oyRPTqPU2RSjXHJJuzvAjQrKxj1KsmAt7uQR"
+			]
+		},
+		"ProjectResearch/SmartCV/SmartContract/contracts/database/ListBusiness.sol": {
+			"keccak256": "0xd8a3f3a05aa0a300320e3edbe0335098997ac0eb3d7dd584027eabed20c86ce1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://75b5c5becc5f0ca1f2f082e8cf96a7fe2646b215d967bb2733a65f18f5aa2ebb",
+				"dweb:/ipfs/QmXsirtg7PSuSqaR2hqGex3zChjwLZSBizGcUHFgTtgksE"
+			]
+		},
+		"ProjectResearch/SmartCV/SmartContract/contracts/interface/IBusiness.sol": {
+			"keccak256": "0xab03725317cbeacc6c561fa465eaaf4b8a114c89d18e60fd6f54b3e867f42774",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d5701761350bfce5c7451f05a085ee26f3dae9cf78bc332a34a3ff79ffda620b",
+				"dweb:/ipfs/QmZoRe9AYK75x3Uk93YGo5DStaMBiftYqdSxGQxhNCNBNG"
+			]
+		},
+		"ProjectResearch/SmartCV/SmartContract/contracts/interface/IERC20.sol": {
+			"keccak256": "0x441960cf8d84dda41efc2df6a3019025a0117348dcd2b838152d460940fde351",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4bb7225db6b14eb949cc2533600299e9ee43d6d53a5c2b423b2261b59fc7743c",
+				"dweb:/ipfs/QmPE54vat8zANapWbF8YYcvq8NrQmS223ze31jfNe4wbmL"
+			]
+		}
+	},
+	"version": 1
+}

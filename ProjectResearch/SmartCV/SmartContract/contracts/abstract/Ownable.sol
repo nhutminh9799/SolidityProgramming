@@ -37,6 +37,11 @@ abstract contract Ownable {
         _;
     }
 
+    modifier onlyUser(address x, address y) {
+        _checkUser(x, y);
+        _;
+    }
+
     /**
      * @dev Returns the address of the current owner.
      */
@@ -50,6 +55,14 @@ abstract contract Ownable {
     function _checkOwner() internal view virtual {
         require(owner() == msg.sender, "Ownable: caller is not the owner");
     }
+
+    function _checkUser(address x, address y) internal view virtual {
+        require(x == y, "Ownable: caller is not the user");
+    }
+
+    // function checkUser(address x, address y) external view virtual {
+    //     _checkUser(x, y);
+    // }
 
     /**
      * @dev Leaves the contract without owner. It will not be possible to call

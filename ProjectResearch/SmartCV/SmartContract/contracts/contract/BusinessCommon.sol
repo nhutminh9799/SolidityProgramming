@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-import {IBusiness} from "../interface/IBusiness.sol";
-
-interface IBusinessCommon is IBusiness {}
+import {IBusinessCommon} from "../interface/IBusinessCommon.sol";
 
 contract BusinessCommon is IBusinessCommon {
     uint256 private catergory = 1;
+    uint256 private id;
     address private user;
     string private name;
     string private phone;
@@ -40,80 +39,88 @@ contract BusinessCommon is IBusinessCommon {
     }
 
     // setter
-    function setUser(address value) public {
+    function setId(uint256 value) public override {
+        id = value;
+    }
+
+    function setUser(address value) public override {
         user = value;
     }
 
-    function setName(string memory value) public {
+    function setName(string memory value) public override {
         name = value;
     }
 
-    function setPhone(string memory value) public {
+    function setPhone(string memory value) public override {
         phone = value;
     }
 
-    function setProfessional(string memory value) public {
+    function setProfessional(string memory value) public override {
         professional = value;
     }
 
-    function setEmail(string memory value) public {
+    function setEmail(string memory value) public override {
         email = value;
     }
 
-    function setGithub(string memory value) public {
+    function setGithub(string memory value) public override {
         github = value;
     }
 
-    function setLinkedin(string memory value) public {
+    function setLinkedin(string memory value) public override {
         linkedin = value;
     }
 
-    function setSourceImage(string memory value) public {
+    function setSourceImage(string memory value) public override {
         sourceImage = value;
     }
 
-    function setPassword(string memory value) public {
+    function setPassword(string memory value) public override {
         password = value;
     }
 
     //getter
-    function getCategory() public view returns (uint256) {
+    function getId() public view override returns (uint256) {
+        return id;
+    }
+
+    function getCategory() public view override returns (uint256) {
         return catergory;
     }
 
-    function getUser() public view returns (address) {
+    function getUser() public view override returns (address) {
         return user;
     }
 
-    function getName() public view returns (string memory) {
+    function getName() public view override returns (string memory) {
         return name;
     }
 
-    function getPhone() public view returns (string memory) {
+    function getPhone() public view override returns (string memory) {
         return phone;
     }
 
-    function getProfessional() public view returns (string memory) {
+    function getProfessional() public view override returns (string memory) {
         return professional;
     }
 
-    function getEmail() public view returns (string memory) {
+    function getEmail() public view override returns (string memory) {
         return email;
     }
 
-    function getGithub() public view returns (string memory) {
+    function getGithub() public view override returns (string memory) {
         return github;
     }
 
-    function getLinkedin() public view returns (string memory) {
+    function getLinkedin() public view override returns (string memory) {
         return linkedin;
     }
 
-    function getSourceImage() public view returns (string memory) {
+    function getSourceImage() public view override returns (string memory) {
         return sourceImage;
     }
 
-    function getPassword() public view returns (string memory) {
+    function getPassword() public view override returns (string memory) {
         return password;
     }
 }

@@ -3,6 +3,8 @@ pragma solidity >=0.4.22 <0.9.0;
 
 interface IBusiness {
     // setter
+    function setId(uint256 value) external;
+
     function setUser(address value) external;
 
     function setName(string memory value) external;
@@ -22,23 +24,25 @@ interface IBusiness {
     function setPassword(string memory value) external;
 
     //getter
-    function getCategory() external view returns (uint256);
+    function getId() external returns (uint256);
 
-    function getUser() external view returns (address);
+    function getCategory() external returns (uint256);
 
-    function getName() external view returns (string memory);
+    function getUser() external returns (address);
 
-    function getPhone() external view returns (string memory);
+    function getName() external returns (string memory);
 
-    function getProfessional() external view returns (string memory);
+    function getPhone() external returns (string memory);
 
-    function getEmail() external view returns (string memory);
+    function getProfessional() external returns (string memory);
 
-    function getGithub() external view returns (string memory);
+    function getEmail() external returns (string memory);
 
-    function getLinkedin() external view returns (string memory);
+    function getGithub() external returns (string memory);
 
-    function getSourceImage() external view returns (string memory);
+    function getLinkedin() external returns (string memory);
 
-    function getPassword() external view returns (string memory);
+    function getSourceImage() external returns (string memory);
+
+    function getPassword() external returns (string memory);
 }
